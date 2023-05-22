@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Button, Card, CardActionArea, CardContent, CardHeader, CardMedia, Grid, Link, Typography } from '@mui/material'
 import '../Product.css'
-import pants from '../Products/swim1.jpg'
 
 const Products = () => {
 
