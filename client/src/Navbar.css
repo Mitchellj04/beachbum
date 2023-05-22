@@ -1,6 +1,6 @@
 .header {
     position: fixed;
-    height: 150px;
+    height: 180px;
     width: 100%;
     top: 0;
     left: 0;
@@ -44,12 +44,12 @@
 
 .nav-item .active {
     padding-bottom: 12px;
-    border-bottom: 3px solid rgb(235, 213, 87);
+    border-bottom: 3px solid rgb(235, 203, 87);
 }
 
 .header .nav-item a:hover {
     padding-bottom: 12px;
-    border-bottom: 3px solid rgb(235, 213, 87);
+    border-bottom: 3px solid rgb(235, 203, 87);
 }
 
 
