@@ -1,10 +1,41 @@
-import React from 'react'
-import { Box, Button, Grid, Link, Typography } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { Box, Button, Card, CardActionArea, CardContent, CardHeader, CardMedia, Grid, Link, Typography } from '@mui/material'
+import '../Product.css'
+import pants from '../Products/swim1.jpg'
 
 const Products = () => {
+
+    const [products, setProducts] = useState([])
+
+
+useEffect(() => {
+    fetch('/products')
+    .then((resp) => resp.json())
+    .then((data) => setProducts(data))
+}, [])
+
+
+    const mapProducts = products.map((item) => {
+        return <Grid item>
+                <Card>
+                    <CardActionArea>
+                        <CardHeader title={item.title}></CardHeader>
+                        <CardMedia component='img' image={item.image}></CardMedia>
+                        <CardContent>
+                            <Typography>Color: {item.color}</Typography>
+                            <Typography>Size: {item.size}</Typography>
+                            <Typography>$ {item.price}</Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+            </Grid>
+    })
+
   return (
-    <div>
-        <Grid
+    <div className='product-div'>
+        <Grid container>
+            {mapProducts}
+        </Grid>
     </div>
   )
 }

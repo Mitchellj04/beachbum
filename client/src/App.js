@@ -5,6 +5,7 @@ import Home from './Components/Home';
 import Navbar from './Components/Navbar';
 import Products from './Components/Products';
 import ProductItem from './Components/ProductItem';
+import About from './Components/About';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path='/' element={<Home />}/>
           <Route path='/products' element={<Products />}/>
           <Route path='/item' element={<ProductItem/>}/>
+          <Route path='/about' element={<About />}/>
         </Routes>
     </div>
   );
