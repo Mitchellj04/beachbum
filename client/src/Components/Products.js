@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Button, Card, CardActionArea, CardContent, CardHeader, CardMedia, Grid, Link, Typography } from '@mui/material'
 import '../Product.css'
+import { useSelector } from 'react-redux'
 
 const Products = () => {
 
-    const [products, setProducts] = useState([])
-
-
-useEffect(() => {
-    fetch('/products')
-    .then((resp) => resp.json())
-    .then((data) => setProducts(data))
-}, [])
+    // const [products, setProducts] = useState([])
+    const products = useSelector((state) => state.products.products)
 
 
     const mapProducts = products.map((item) => {
