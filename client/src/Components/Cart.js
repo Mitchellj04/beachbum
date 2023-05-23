@@ -3,7 +3,7 @@ import React from 'react'
 
 const Cart = () => {
   return (
-    <div>
+    <div id='cart' >
       <Grid container>
           <Grid item>
             <Typography>In your bag</Typography>

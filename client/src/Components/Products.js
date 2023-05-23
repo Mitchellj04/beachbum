@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Button, Card, CardActionArea, CardContent, CardHeader, CardMedia, Grid, Link, Typography } from '@mui/material'
 import '../Product.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAllProducts } from '../Redux/Products /ProductSlice'
+import pants  from '../Products/pants1.jpg'
+import pants2 from '../Products/pants2.jpg'
+import shirt1 from '../Products/shirt1.jpg'
+import shirt2 from '../Products/shirt2.jpg'
 
 const Products = () => {
 
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchAllProducts())
+    },[])
     // const [products, setProducts] = useState([])
     const products = useSelector((state) => state.products.products)
 
+    console.log(products)
 
     const mapProducts = products.map((item) => {
         return <Grid item>

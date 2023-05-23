@@ -20,7 +20,7 @@ const NavBar = () => {
                   <li className='nav-item'><Link to="home" spy={true} smooth={true} offset={-150} duration={500} onClick={()=> navigate('/')}>Home</Link></li>
                     <li className='nav-item'><Link to="products" spy={true} smooth={true} offset={-150} duration={500} onClick={()=> navigate('/products')}>Products</Link></li>
                     <li className='nav-item'><Link to="about" spy={true} smooth={true} offset={-150} duration={500} onClick={()=> navigate('/about')}>About</Link></li>
-                    <li className='nav-item'><Link to="skills" spy={true} smooth={true} offset={-150} duration={500} onClick={closeMenu}>Cart</Link></li>
+                    <li className='nav-item'><Link to="cart" spy={true} smooth={true} offset={-150} duration={500} onClick={() => navigate('/cart')}>Cart</Link></li>
                     
                   </ul>
         </nav>
