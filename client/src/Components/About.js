@@ -6,7 +6,7 @@ import lighthouse from '../Images/lighthouse.JPG'
 
 const About = () => {
   return (
-    <div style={{marginTop: '10vh'}}>
+    <div style={{marginTop: '10vh'}} id='about'>
 
         <img src={beach} style={{width: '100vw', height: '100vh'}}></img>    
         <div style={{justifyContent: 'center', alignItems: 'center'}}>   
@@ -23,7 +23,7 @@ const About = () => {
                 </Grid>
                 <Grid item xs={5}>
                     I was stuck with a problem trying to find nice cloths that encapsulated my adventurous and relaxed personality. Either the cloths were just too cheap and are not breathable or they were extermely expensive for what you are getting. 
-                    
+
                 </Grid>
                 <Grid item xs={5}>
                     <img src={lighthouse} style={{width: '100%', height: '100%'}}></img>
