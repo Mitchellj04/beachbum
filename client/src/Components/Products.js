@@ -7,6 +7,7 @@ import pants  from '../Products/pants1.jpg'
 import pants2 from '../Products/pants2.jpg'
 import shirt1 from '../Products/shirt1.jpg'
 import shirt2 from '../Products/shirt2.jpg'
+import { addCart } from '../Redux/Cart/CartSlice'
 
 const Products = () => {
 
@@ -17,8 +18,13 @@ const Products = () => {
     },[])
     // const [products, setProducts] = useState([])
     const products = useSelector((state) => state.products.products)
+    const cart = useSelector((state) => state.cart)
 
-    console.log(products)
+    console.log(cart)
+
+    const handleAddToCart = (product) => {
+        dispatch(addCart(product))
+    }
 
     const mapProducts = products.map((item) => {
         return <Grid item>
@@ -30,6 +36,7 @@ const Products = () => {
                             <Typography>Color: {item.color}</Typography>
                             <Typography>Size: {item.size}</Typography>
                             <Typography>$ {item.price}</Typography>
+                            <Button onClick={() => handleAddToCart(item)}>Add Cart</Button>
                         </CardContent>
                     </CardActionArea>
                 </Card>
