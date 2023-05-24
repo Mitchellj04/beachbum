@@ -42,9 +42,9 @@ useEffect(() => {
             <Grid container>
                     {mapProducts}
             </Grid>
-            <Carousel>
+            {/* <Carousel>
                 {mapProducts}
-            </Carousel>
+            </Carousel> */}
         </div>
   )
 }

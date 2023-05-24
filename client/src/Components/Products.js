@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Button, Card, CardActionArea, CardContent, CardHeader, CardMedia, Grid, Link, Typography } from '@mui/material'
+import { Box, Button, Card, CardActionArea, CardContent, CardHeader, CardMedia, Grid, InputLabel, Link, Typography } from '@mui/material'
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
 import '../Product.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllProducts } from '../Redux/Products /ProductSlice'
@@ -27,11 +34,11 @@ const Products = () => {
     }
 
     const mapProducts = products.map((item) => {
-        return <Grid item>
-                <Card>
+        return <Grid item xs={5}>
+                <Card className='product-card'>
                     <CardActionArea>
                         <CardHeader title={item.title}></CardHeader>
-                        <CardMedia component='img' image={item.image}></CardMedia>
+                        <CardMedia component='img' image={item.image} style={{width: 500}}></CardMedia>
                         <CardContent>
                             <Typography>Color: {item.color}</Typography>
                             <Typography>Size: {item.size}</Typography>
@@ -45,6 +52,33 @@ const Products = () => {
 
   return (
     <div className='product-div'>
+          <div>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Filter</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <FormControl>
+        <InputLabel id="demo-simple-select-label">Category</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+        //   value={category}
+          label="Age"
+        //   onChange={handleChange}
+        >
+          <MenuItem value={'shirt'}>Shirt</MenuItem>
+          <MenuItem value={'pants'}>Pants</MenuItem>
+          <MenuItem value={'swim'}>Swim</MenuItem>
+        </Select>
+      </FormControl>
+        </AccordionDetails>
+      </Accordion>
+    </div>
         <Grid container>
             {mapProducts}
         </Grid>
