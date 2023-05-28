@@ -3,7 +3,18 @@
     align-items: center;
 }
 
-.main-image{
+.home-image{
+    object-fit: cover;
+    margin-top: -120px;
+}
 
-    
+.title {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.featured{
+    margin: 50px;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,6 +1,6 @@
 import {Link} from 'react-scroll'
 import React, { useState } from 'react'
-import logo from '../Images/logo-no-background.png'
+import logo from '../Images/logo2-no-background.png'
 import '../Navbar.css'
 import { useNavigate } from 'react-router'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';

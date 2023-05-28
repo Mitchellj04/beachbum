@@ -27,7 +27,7 @@ const Cart = () => {
 
  
 
- 
+
   const handleRemoveItem = (product) => {
     dispatch(removeItem(product));
   };
@@ -73,7 +73,7 @@ const Cart = () => {
 
   return (
     <div id="cart" className='cart'>
-      <div>
+      <div className="cart-title">
         <Typography variant="h3">Shopping Cart</Typography>
       </div>
       <div>
@@ -87,8 +87,8 @@ const Cart = () => {
             </Box>
           </div>
         ) : (
-          <div>
-            <div className="titles">
+          <div className="fullCart">
+            <div className="grid-titles">
               <Grid container>
                 <Grid item xs={4}>
                   <Typography variant="h5">Product</Typography>
@@ -108,23 +108,22 @@ const Cart = () => {
           </div>
         )}
       </div>
-      <div>
-        <Grid container>
-          <Grid item xs={4}>
-            <Button variant='outlined'>Clear</Button>
-          </Grid>
-          <Grid item>
-            <div style={{display: 'flex'}}>            
-            <Typography variant="h4">Subtotal</Typography>
-            <Typography variant="h5">$ {cart.cartTotalAmount}</Typography>
+      <div className='cart-total'>
+          <Box className='cart-clear'>
+            <Button style={{width: 225, margin: 50}} variant='outlined'>Clear</Button>
+          </Box>
+          <Box className='cart-subtotal'>
+            <div >            
+            <Typography style={{width: '50%'}} variant="h4">Subtotal:   $ {cart.cartTotalAmount}</Typography>
+            <Typography style={{width: '50%'}} variant="h5"></Typography>
             </div>
-            <div>
+            <div className='cart-info'>
             <Typography>Taxes and Shipping may vary</Typography>
-            <Button variant="outlined"> Checkout </Button>
+            <Button style={{width: 225}} variant="outlined"> Checkout </Button>
             </div>
             <Button startIcon={<KeyboardBackspaceIcon />}>Continue Shopping</Button>
-          </Grid>
-        </Grid>
+          </Box>
+   
       </div>
     </div>
   );

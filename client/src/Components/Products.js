@@ -9,16 +9,18 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import '../Product.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllProducts } from '../Redux/Products /ProductSlice'
+import { fetchAllProducts, fetchProductItem } from '../Redux/Products /ProductSlice'
 import pants  from '../Products/pants1.jpg'
 import pants2 from '../Products/pants2.jpg'
 import shirt1 from '../Products/shirt1.jpg'
 import shirt2 from '../Products/shirt2.jpg'
 import { addCart } from '../Redux/Cart/CartSlice'
+import { useNavigate } from 'react-router-dom';
 
 const Products = () => {
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(fetchAllProducts())
@@ -33,15 +35,19 @@ const Products = () => {
         dispatch(addCart(product))
     }
 
+    const handleProjectItem = (item) => {
+      dispatch(fetchProductItem(item.id))
+      navigate('/item')
+      
+    }
+
     const mapProducts = products.map((item) => {
-        return <Grid item xs={5}>
+        return <Grid item xs={5} className='product-grid-item'>
                 <Card className='product-card'>
-                    <CardActionArea>
-                        <CardHeader title={item.title}></CardHeader>
+                    <CardActionArea onClick={() => handleProjectItem(item)}>
                         <CardMedia component='img' image={item.image} style={{width: 500}}></CardMedia>
                         <CardContent>
-                            <Typography>Color: {item.color}</Typography>
-                            <Typography>Size: {item.size}</Typography>
+                            <Typography variant={'h5'}>{item.title}</Typography>
                             <Typography>$ {item.price}</Typography>
                             <Button onClick={() => handleAddToCart(item)}>Add Cart</Button>
                         </CardContent>
@@ -52,7 +58,7 @@ const Products = () => {
 
   return (
     <div className='product-div'>
-          <div>
+          <div className='filter-dropdown'>
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -62,11 +68,12 @@ const Products = () => {
           <Typography>Filter</Typography>
         </AccordionSummary>
         <AccordionDetails>
-        <FormControl>
-        <InputLabel id="demo-simple-select-label">Category</InputLabel>
+        <FormControl fullWidth>
+        <InputLabel id="select-label">Category</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
+          
+          labelId="select-label"
+          id="simple-select"
         //   value={category}
           label="Age"
         //   onChange={handleChange}
@@ -79,7 +86,7 @@ const Products = () => {
         </AccordionDetails>
       </Accordion>
     </div>
-        <Grid container>
+        <Grid container className='product-grid'>
             {mapProducts}
         </Grid>
     </div>

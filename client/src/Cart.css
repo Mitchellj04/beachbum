@@ -2,6 +2,42 @@
     margin-top: 200px;
     align-items: center;
     justify-content: center;
+
+}
+
+.cart-title {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.emptyCart{
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;    
+    text-align: center;
+}
+
+.fullCart{
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-total{
+    margin-top: 50px;
+    display: flex;
+}
+
+.cart-clear{
+    width: 50vw;
+}
+
+.cart-subtotal{
+    width: 50vw;
+    text-align: left;
+}
+
+.cart-info{
+    margin-top: 10px;
 }
 
 

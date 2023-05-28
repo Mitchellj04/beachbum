@@ -21,14 +21,12 @@ useEffect(() => {
 
 
     const mapProducts = featured.map((item) => {
-        return <Grid item xs={2}>
+        return <Grid item xs={2} style={{margin: 20}}>
                 <Card>
                     <CardActionArea onClick={() => navigate('/products')}>
-                        <CardHeader title={item.title}></CardHeader>
                         <CardMedia component='img' image={item.image}></CardMedia>
                         <CardContent>
-                            <Typography>Color: {item.color}</Typography>
-                            <Typography>Size: {item.size}</Typography>
+                            <Typography variant='h6'>{item.title}</Typography>
                             <Typography>$ {item.price}</Typography>
                         </CardContent>
                     </CardActionArea>
@@ -38,13 +36,14 @@ useEffect(() => {
 
   return (
     <div className='home-products'>
-            <Typography variant='h4'>Featured Products</Typography>
-            <Grid container>
+            <Typography variant='h4' style={{textAlign: 'center'}}>Featured Products</Typography>
+            <div>
+
+           
+            <Grid container style={{justifyContent:'center'}}>
                     {mapProducts}
             </Grid>
-            {/* <Carousel>
-                {mapProducts}
-            </Carousel> */}
+         </div>
         </div>
   )
 }

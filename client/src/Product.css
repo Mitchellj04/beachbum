@@ -1,3 +1,18 @@
 .product-div{
     margin-top: 20vh;
 }
+
+.product-grid {
+    justify-content: center;
+}
+
+.filter-dropdown {
+    width: 20%;
+    align-items: right;
+    justify-content: right;
+}
+
+.product-card {
+    width: 75%;
+    margin: 50px;
+}

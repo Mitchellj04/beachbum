@@ -6,9 +6,15 @@ export const fetchAllProducts = createAsyncThunk('products/fetchAllProducts', ()
     .then((items) => items)
 })
 
+export const fetchProductItem = createAsyncThunk('product/fetchProductITem', (id) => {
+    return fetch(`/products/${id}`)
+    .then((resp) => resp.json())
+    .then((data) => data)
+})
 
 const initialState = {
     products: [],
+    item: [],
     errors: []
 }
 
@@ -22,6 +28,10 @@ const productSlice = createSlice({
                 // console.log(action.payload)
                 state.products = action.payload
                 state.errors = []
+        })
+        .addCase(fetchProductItem.fulfilled, (state, action) => {
+           state.item = action.payload
+           state.errors = []
         })
     }
 })
