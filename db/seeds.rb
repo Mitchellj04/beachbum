@@ -7,7 +7,9 @@
 #   Character.create(name: "Luke", movie: movies.first)
 Category.delete_all
 Product.delete_all
+User.delete_all
 
+u1 = User.create(name: 'Justin Mitchell', address: '1080 Dunbar Hill Road', email: 'mitchelljm04@gmail.com', phone: '203-909-0635', password: 'January499!')
 
 c1 = Category.create(item: 'Shirt')
 c2 = Category.create(item: 'Shorts')
