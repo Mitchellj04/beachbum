@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { cartTotals, decreaseCart, increaseCart, removeItem } from "../Redux/Cart/CartSlice";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import '../Cart.css'
+import { createOrder } from "../Redux/Orders/OrderSlice";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -39,6 +40,16 @@ const Cart = () => {
   const increaseCartItem = (product) => {
     dispatch(increaseCart(product))
   } 
+
+  const data = {
+    order: { user_id: 8 },
+    products: [29, 30]
+  }
+
+  const handleSubmitOrder = (e) => {
+    e.preventDefault()
+    dispatch(createOrder(data))
+  }
 
   const items = cart.cartItems.map((product) => {
     return (
@@ -119,7 +130,7 @@ const Cart = () => {
             </div>
             <div className='cart-info'>
             <Typography>Taxes and Shipping may vary</Typography>
-            <Button style={{width: 225}} variant="outlined"> Checkout </Button>
+            <Button style={{width: 225}} variant="outlined" onClick={() => navigate("/checkout")}> Checkout </Button>
             </div>
             <Button startIcon={<KeyboardBackspaceIcon />}>Continue Shopping</Button>
           </Box>
