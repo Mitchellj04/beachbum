@@ -10,7 +10,12 @@ class OrdersController < ApplicationController
     end
 
     def create 
+        
+        product_param = params[:products]
         order = Order.create!(order_params)
+        product = Product.select { |item| product_param.include?(item.id)}
+        # debugger
+        order.products << product
         render json: order, status: :created
     end
 
@@ -18,6 +23,10 @@ class OrdersController < ApplicationController
     private 
 
     def order_params 
-        params.permit(:user_id, :products)
+        params.require(:order).permit(:user_id)
     end
+
+    # def order_params
+    #     params.permit()
+    # end
 end

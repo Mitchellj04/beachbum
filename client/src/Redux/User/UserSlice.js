@@ -2,13 +2,19 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 
 export const createUser = createAsyncThunk('user/createUser', (info) => {
-    return fetch('/user', {
+    return fetch('/users', {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(info)
     })
     .then((resp) => resp.json())
     .then((data) => data)
+})
+
+export const userSignIn = createAsyncThunk('user/userSignIn', (user) => {
+    return fetch('/users')
+    .then((resp) => resp.json())
+    .then((data) => console.log(data))
 })
 
 const initialState = {
@@ -23,8 +29,8 @@ const userSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-        .addCase(createUser.fulfilled, (state) => {
-            console.log(state)
+        .addCase(createUser.fulfilled, (state, action) => {
+            state.user = action.payload
         })
     }
 })

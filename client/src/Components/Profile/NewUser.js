@@ -1,5 +1,7 @@
 import { Box, Button, Paper, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createUser } from "../../Redux/User/UserSlice";
 
 const NewUser = () => {  
     
@@ -11,6 +13,8 @@ const NewUser = () => {
     width: 400,
     margin: "100px auto",
   };
+
+    const dispatch = useDispatch()
 
     //
     const [name, setName] = useState('')
@@ -29,8 +33,9 @@ const NewUser = () => {
     }
 
 
-  const handleCreateUser = () => {
-
+  const handleCreateUser = (e) => {
+    e.preventDefault()
+    dispatch(createUser(newUser))
   }
 
   return (
@@ -47,7 +52,7 @@ const NewUser = () => {
               value={name}
               label="Name"
               style={fieldStyle}
-              onChange={() => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
             />
             <TextField
               required
@@ -57,7 +62,7 @@ const NewUser = () => {
               value={email}
               label="email"
               style={fieldStyle}
-              onChange={() => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               required
@@ -67,7 +72,7 @@ const NewUser = () => {
               value={phone}
               label="phone"
               style={fieldStyle}
-              onChange={() => setPhone(e.target.value)}
+              onChange={(e) => setPhone(e.target.value)}
             />
             <TextField
               required
@@ -77,7 +82,7 @@ const NewUser = () => {
               value={address}
               label="Address"
               style={fieldStyle}
-              onChange={() => setAddress(e.target.value)}
+              onChange={(e) => setAddress(e.target.value)}
             />
             <TextField
               required
@@ -87,7 +92,7 @@ const NewUser = () => {
               value={password}
               label="password"
               style={fieldStyle}
-              onChange={() => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <Button type="submit" variant="contained" onClick={handleCreateUser}>
               Continue
