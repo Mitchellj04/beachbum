@@ -1,10 +1,12 @@
 import { Alert, Box, Button, Paper, TextField, Typography } from "@mui/material";
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { userSignIn } from "../../Redux/User/UserSlice";
 
 const Sign = () => {    
   
+  //Styling
   const fieldStyle = {
         margin: "5px auto",
       };
@@ -16,19 +18,27 @@ const Sign = () => {
 
       };
 
+    //Redux Reducer 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+    
+    //User State
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const errorMessage = useSelector((state) => state.user.errors)
 
 
+    //User info
       const customer = {
         email, 
         password
       }
+
+      //User login fetch 
       const handleSignIn = (e) => {
         e.preventDefault()
         dispatch(userSignIn(customer))
+        navigate('/confirm')
       }
 
 

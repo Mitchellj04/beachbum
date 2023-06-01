@@ -8,6 +8,7 @@ import ProductItem from './Components/ProductItem';
 import About from './Components/About';
 import Cart from './Components/Cart';
 import Checkout from './Components/Profile/Checkout';
+import Confirm from './Components/Checkout/Confirm';
 
 
 
@@ -23,6 +24,7 @@ function App() {
           <Route path='/about' element={<About />}/>
           <Route path='/cart' element={<Cart/>} />
           <Route path='/checkout' element={<Checkout />}/>
+          <Route path='/confirm' element={<Confirm />} />
         </Routes>
     </div>
   );

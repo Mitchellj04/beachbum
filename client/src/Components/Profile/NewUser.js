@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../Redux/User/UserSlice";
 
-const NewUser = () => {  
-    
-    const fieldStyle = {
+const NewUser = () => {
+
+  //Styling
+  const fieldStyle = {
     margin: "5px auto",
   };
   const paperStyle = {
@@ -14,29 +15,30 @@ const NewUser = () => {
     margin: "100px auto",
   };
 
-    const dispatch = useDispatch()
+  //Redux Reducer 
+  const dispatch = useDispatch();
 
-    //
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [phone, setPhone] = useState('')
-    const [address, setAddress] = useState('')
-    const [password, setPassword] = useState('')
+  //New User State
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [password, setPassword] = useState("");
 
+  //New User info
+  const newUser = {
+    name,
+    email,
+    phone,
+    address,
+    password,
+  };
 
-    const newUser = {
-        name, 
-        email, 
-        phone, 
-        address,
-        password
-    }
-
-
+  //Handle new user fetch 
   const handleCreateUser = (e) => {
-    e.preventDefault()
-    dispatch(createUser(newUser))
-  }
+    e.preventDefault();
+    dispatch(createUser(newUser));
+  };
 
   return (
     <div>
@@ -94,8 +96,12 @@ const NewUser = () => {
               style={fieldStyle}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button type="submit" variant="contained" onClick={handleCreateUser}>
-              Continue
+            <Button
+              type="submit"
+              variant="contained"
+              onClick={handleCreateUser}
+            >
+              Continue{" "}
             </Button>
           </form>
         </Paper>

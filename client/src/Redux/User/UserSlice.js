@@ -34,6 +34,7 @@ const userSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(createUser.fulfilled, (state, action) => {
+            console.log(action.payload)
             state.user = action.payload
         })
         .addCase(userSignIn.fulfilled, (state, action) => {
