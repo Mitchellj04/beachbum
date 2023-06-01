@@ -32,6 +32,9 @@ const userSlice = createSlice({
         .addCase(createUser.fulfilled, (state, action) => {
             state.user = action.payload
         })
+        .addCase(userSignIn.fulfilled, () => {
+            
+        })
     }
 })
 

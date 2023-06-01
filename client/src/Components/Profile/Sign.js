@@ -1,7 +1,11 @@
 import { Box, Button, Paper, TextField, Typography } from "@mui/material";
-import React from 'react'
+import React, { useState } from 'react'
 
 const Sign = () => {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
     const fieldStyle = {
         margin: "5px auto",
       };
@@ -13,30 +17,42 @@ const Sign = () => {
 
       };
 
+      const customer = {
+        email, 
+        password
+      }
+      const handleSignIn = () => {
+        
+      }
+
 
   return (
     <div>
 <Box>
         <Paper elevation={5} style={paperStyle}>
           <form>
-            <Typography>Create Account</Typography>
+            <Typography>Sign In</Typography>
             <TextField
               required
               autoFocus
               variant="standard"
+              value={email}
               fullWidth
               label="email"
               style={fieldStyle}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               required
               fullWidth
               variant="standard"
+              value={password}
               type={"password"}
               label="password"
               style={fieldStyle}
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <Button type="submit" variant="contained">
+            <Button type="submit" variant="contained" onClick={handleSignIn}>
               Checkout
             </Button>
           </form>
