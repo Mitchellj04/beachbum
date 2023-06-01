@@ -1,12 +1,11 @@
-import { Box, Button, Paper, TextField, Typography } from "@mui/material";
+import { Alert, Box, Button, Paper, TextField, Typography } from "@mui/material";
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import { userSignIn } from "../../Redux/User/UserSlice";
 
-const Sign = () => {
-
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
-    const fieldStyle = {
+const Sign = () => {    
+  
+  const fieldStyle = {
         margin: "5px auto",
       };
       const paperStyle = {
@@ -17,12 +16,19 @@ const Sign = () => {
 
       };
 
+    const dispatch = useDispatch()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const errorMessage = useSelector((state) => state.user.errors)
+
+
       const customer = {
         email, 
         password
       }
-      const handleSignIn = () => {
-        
+      const handleSignIn = (e) => {
+        e.preventDefault()
+        dispatch(userSignIn(customer))
       }
 
 
@@ -55,6 +61,9 @@ const Sign = () => {
             <Button type="submit" variant="contained" onClick={handleSignIn}>
               Checkout
             </Button>
+            {errorMessage.map((text) => {
+                return <Alert severity="error">{text}</Alert>
+            })}
           </form>
         </Paper>
       </Box>

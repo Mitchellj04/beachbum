@@ -12,9 +12,13 @@ export const createUser = createAsyncThunk('user/createUser', (info) => {
 })
 
 export const userSignIn = createAsyncThunk('user/userSignIn', (user) => {
-    return fetch('/users')
+    return fetch('/login', {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(user)
+    })
     .then((resp) => resp.json())
-    .then((data) => console.log(data))
+    .then((data) => data)
 })
 
 const initialState = {
@@ -32,7 +36,15 @@ const userSlice = createSlice({
         .addCase(createUser.fulfilled, (state, action) => {
             state.user = action.payload
         })
-        .addCase(userSignIn.fulfilled, () => {
+        .addCase(userSignIn.fulfilled, (state, action) => {
+            if (action.payload.errors){
+                state.errors = action.payload.errors
+                state.user = null
+            }
+            else {
+                state.user = action.payload 
+                state.errors = []
+            }
             
         })
     }
