@@ -9,6 +9,7 @@ import About from './Components/About';
 import Cart from './Components/Cart';
 import Checkout from './Components/Profile/Checkout';
 import Confirm from './Components/Checkout/Confirm';
+import Payment from './Components/Checkout/Payment';
 
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route path='/cart' element={<Cart/>} />
           <Route path='/checkout' element={<Checkout />}/>
           <Route path='/confirm' element={<Confirm />} />
+          <Route path='/payment' element={<Payment />} />
         </Routes>
     </div>
   );

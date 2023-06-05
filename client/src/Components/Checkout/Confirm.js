@@ -16,10 +16,14 @@ const Confirm = () => {
           <Grid item xs={5}>
               <Typography variant='h4'>Information</Typography>
               <div>
-                  <Typography>{user.name}</Typography>
-                  <Typography>{user.address}</Typography>
-                  <Typography>{user.phone}</Typography>
-                  <Typography>{user.email}</Typography>
+                  <Typography>Name: {user.name}</Typography>
+                  <Typography>Address: {user.address}</Typography>
+                  <Typography>Phone: {user.phone}</Typography>
+                  <Typography>Email: {user.email}</Typography>
+              </div>
+              <div>
+                <Typography variant='h4'>Shipping Information</Typography>
+                
               </div>
           </Grid>
           <Grid item xs={5}>

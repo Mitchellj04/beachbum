@@ -1,0 +1,49 @@
+.newuser-form {
+
+}
+
+form {
+    display: block;
+    margin: 1rem
+}
+
+.order-info {
+    margin: 20px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+}
+
+tbody{
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr{
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+td, th {
+    padding-left: 1rem;
+}
+
+td{
+    padding-left: 1.5em;
+    text-align: right;
+    white-space: nowrap;
+}
+
+
+th{
+    padding-top: 1rem;
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: -internal-center;
+}

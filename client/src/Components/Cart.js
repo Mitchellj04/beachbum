@@ -82,6 +82,54 @@ const Cart = () => {
     );
   });
 
+  const shopping = cart.cartItems.map((product) => {
+    return (
+      <tr>
+        <td><img
+              component="img"
+              src={product.image}
+              style={{ height: 200 }}/></td>
+              <td>
+                <div><Typography>{product.title}</Typography></div>
+                <div><Typography>{product.color}</Typography></div>
+                <div><Typography>{product.size}</Typography></div>
+                <div style={{display: 'flex'}}>
+                <Button onClick={() => decreaeCartItem(product)}>-</Button> 
+              <p>{product.cartQuantity}</p>
+                <Button onClick={() => increaseCartItem(product)}>+</Button>
+            </div>
+              </td>
+              <td><Typography>$ {product.price}</Typography></td>
+      </tr>
+      // <Grid container>
+      //   <Grid item xs={4}>
+      //     <div className="cart-product-div">
+      //       <img
+      //         component="img"
+      //         src={product.image}
+      //         style={{ height: 200 }}/>
+      //       <Typography>Color: {product.color}</Typography>
+      //       <Typography>Size: {product.size}</Typography>
+      //       <Button onClick={() => handleRemoveItem(product)}>Remove</Button>
+      //     </div>
+      //   </Grid>
+      //   <Grid xs={2}>
+      //     <Typography>$ {product.price}</Typography>
+      //   </Grid>
+      //   <Grid xs={2}>
+      //     <div style={{display: 'flex'}}>
+      //       <Button onClick={() => decreaeCartItem(product)}>-</Button> 
+      //       <p>{product.cartQuantity}</p>
+      //       <Button onClick={() => increaseCartItem(product)}>+</Button>
+      //     </div>
+      //   </Grid>
+      //   <Grid xs={2}>
+      //     <Typography>$ {product.price * product.cartQuantity}</Typography>
+      //   </Grid>
+      // </Grid>
+    );
+  });
+
   return (
     <div id="cart" className='cart'>
       <div className="cart-title">
@@ -100,7 +148,7 @@ const Cart = () => {
         ) : (
           <div className="fullCart">
             <div className="grid-titles">
-              <Grid container>
+              {/* <Grid container>
                 <Grid item xs={4}>
                   <Typography variant="h5">Product</Typography>
                 </Grid>
@@ -113,9 +161,15 @@ const Cart = () => {
                 <Grid item xs={2}>
                   <Typography variant="h5">Total</Typography>
                 </Grid>
-              </Grid>
+              </Grid> */}
             </div>
-            <div className="cartItems">{items}</div>
+            <div className="cartItems">
+              <table>
+                <tbody>
+                  {shopping}
+                  </tbody>
+                  </table>
+            </div>
           </div>
         )}
       </div>

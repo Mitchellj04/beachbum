@@ -44,3 +44,7 @@
 .cart-product-div {
     display: flex;
 }
+
+td{
+    align-items: left;
+}
