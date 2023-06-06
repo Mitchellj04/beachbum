@@ -1,4 +1,5 @@
 import {
+  Alert,
   Box,
   Button,
   Card,
@@ -7,7 +8,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { cartTotals, decreaseCart, increaseCart, removeItem } from "../Redux/Cart/CartSlice";
@@ -20,7 +21,8 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
- console.log(cart);
+  const [error, setError] = useState([])
+ console.log(cart.cartItems.length);
 
  useEffect(() => {
     dispatch(cartTotals())
@@ -41,6 +43,15 @@ const Cart = () => {
     dispatch(increaseCart(product))
   } 
 
+  const continueCheckout = () => {
+    if(cart.cartItems.length === 0){
+      setError(['There are no items in cart'])
+    }
+    else {
+      navigate('/checkout')
+      setError([])
+    }
+  }
   const data = {
     order: { user_id: 8 },
     products: [29, 30]
@@ -99,34 +110,8 @@ const Cart = () => {
                 <Button onClick={() => increaseCartItem(product)}>+</Button>
             </div>
               </td>
-              <td><Typography>$ {product.price}</Typography></td>
+              <td><Typography>$ {product.price}/ea</Typography></td>
       </tr>
-      // <Grid container>
-      //   <Grid item xs={4}>
-      //     <div className="cart-product-div">
-      //       <img
-      //         component="img"
-      //         src={product.image}
-      //         style={{ height: 200 }}/>
-      //       <Typography>Color: {product.color}</Typography>
-      //       <Typography>Size: {product.size}</Typography>
-      //       <Button onClick={() => handleRemoveItem(product)}>Remove</Button>
-      //     </div>
-      //   </Grid>
-      //   <Grid xs={2}>
-      //     <Typography>$ {product.price}</Typography>
-      //   </Grid>
-      //   <Grid xs={2}>
-      //     <div style={{display: 'flex'}}>
-      //       <Button onClick={() => decreaeCartItem(product)}>-</Button> 
-      //       <p>{product.cartQuantity}</p>
-      //       <Button onClick={() => increaseCartItem(product)}>+</Button>
-      //     </div>
-      //   </Grid>
-      //   <Grid xs={2}>
-      //     <Typography>$ {product.price * product.cartQuantity}</Typography>
-      //   </Grid>
-      // </Grid>
     );
   });
 
@@ -147,49 +132,35 @@ const Cart = () => {
           </div>
         ) : (
           <div className="fullCart">
-            <div className="grid-titles">
-              {/* <Grid container>
-                <Grid item xs={4}>
-                  <Typography variant="h5">Product</Typography>
-                </Grid>
-                <Grid item xs={2}>
-                  <Typography variant="h5">Price</Typography>
-                </Grid>
-                <Grid item xs={2}>
-                  <Typography variant="h5">Quantity</Typography>
-                </Grid>
-                <Grid item xs={2}>
-                  <Typography variant="h5">Total</Typography>
-                </Grid>
-              </Grid> */}
-            </div>
             <div className="cartItems">
-              <table>
+              <table className="cart-table">
                 <tbody>
                   {shopping}
                   </tbody>
                   </table>
-            </div>
-          </div>
-        )}
-      </div>
-      <div className='cart-total'>
-          <Box className='cart-clear'>
-            <Button style={{width: 225, margin: 50}} variant='outlined'>Clear</Button>
-          </Box>
-          <Box className='cart-subtotal'>
-            <div >            
-            <Typography style={{width: '50%'}} variant="h4">Subtotal:   $ {cart.cartTotalAmount}</Typography>
-            <Typography style={{width: '50%'}} variant="h5"></Typography>
+                  <Button style={{width: 225, margin: 50}} variant='outlined'>Clear</Button>
+            </div>      
+          <div className='cart-total'>
+            <div className="cart-summary-wrapper">
+            <div className="cart-subtotal">            
+            <Typography variant="h4">Subtotal:   </Typography>
+            <span><Typography variant="h5">$ {cart.cartTotalAmount}</Typography></span>
             </div>
             <div className='cart-info'>
             <Typography>Taxes and Shipping may vary</Typography>
-            <Button style={{width: 225}} variant="outlined" onClick={() => navigate("/checkout")}> Checkout </Button>
             </div>
-            <Button startIcon={<KeyboardBackspaceIcon />}>Continue Shopping</Button>
-          </Box>
-   
+            <div className="cart-buttons">
+            <Button className="btn" variant="outlined" onClick={continueCheckout}> Checkout </Button>
+            {error.map((er) => <Alert severity="error">{er}</Alert>)}
+            
+            <Button className="btn" startIcon={<KeyboardBackspaceIcon />}>Continue Shopping</Button>
+            </div>
+   </div>
       </div>
+          </div>
+        )}
+      </div>
+
     </div>
   );
 };

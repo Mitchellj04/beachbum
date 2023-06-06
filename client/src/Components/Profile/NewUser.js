@@ -142,7 +142,7 @@ const NewUser = () => {
               );
             })}
           
-              <table>
+              <table className="newuser-table">
                 <tbody>
                 <tr>
                   <th>Subtotal</th>

@@ -33,6 +33,7 @@ const Products = () => {
 
     const handleAddToCart = (product) => {
         dispatch(addCart(product))
+        navigate('/cart')
     }
 
     const handleProjectItem = (item) => {
@@ -46,12 +47,13 @@ const Products = () => {
                 <Card className='product-card'>
                     <CardActionArea onClick={() => handleProjectItem(item)}>
                         <CardMedia component='img' image={item.image} style={{width: 500}}></CardMedia>
+                    </CardActionArea>
                         <CardContent>
                             <Typography variant={'h5'}>{item.title}</Typography>
                             <Typography>$ {item.price}</Typography>
                             <Button onClick={() => handleAddToCart(item)}>Add Cart</Button>
                         </CardContent>
-                    </CardActionArea>
+                    
                 </Card>
             </Grid>
     })
