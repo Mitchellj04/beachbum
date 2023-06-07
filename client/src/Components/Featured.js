@@ -20,7 +20,7 @@ useEffect(() => {
 }, [])
 
 
-    const mapProducts = featured.map((item) => {
+    const mapProducts = featured.slice(0, 5).map((item) => {
         return <Grid item xs={2} style={{margin: 20}}>
                 <Card>
                     <CardActionArea onClick={() => navigate('/products')}>

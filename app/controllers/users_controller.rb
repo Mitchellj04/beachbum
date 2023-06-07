@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     skip_before_action :authorize
+    
 
     def index
         user = User.all
@@ -10,6 +11,8 @@ class UsersController < ApplicationController
         user = User.create!(user_params)
         session[:user_id] = user.id
         render json: user, status: :created
+    rescue ActiveRecord::RecordInvalid => e
+        render json: {errors: e.record.errors.full_messages}
     end
 
     # def show 
@@ -18,6 +21,8 @@ class UsersController < ApplicationController
 
 
     private 
+
+
 
     def user_params
         params.permit(:email, :address, :phone, :name, :password)
