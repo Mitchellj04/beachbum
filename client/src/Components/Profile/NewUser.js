@@ -1,4 +1,5 @@
 import { Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../Redux/User/UserSlice";
@@ -59,7 +60,7 @@ const NewUser = () => {
           <Box>
             <form>
               <div className="contact-info">
-                <Typography vairant>Contact Information</Typography>
+                <Typography variant='h5'>Contact Information</Typography>
                 <TextField
                   required
                   autoFocus
@@ -72,7 +73,7 @@ const NewUser = () => {
                 />
               </div>
               <div className="shipping-info">
-                <Typography>Shipping Information</Typography>
+                <Typography variant='h5'>Shipping Information</Typography>
                 <TextField
                   required
                   autoFocus
@@ -118,14 +119,16 @@ const NewUser = () => {
  
             </form>             
             <div className="form-footer">
-              <Button> --- Return</Button>
+            
+             
+              <Button startIcon={<KeyboardBackspaceIcon />}>Return</Button> 
               <Button
+                className="btn"
                 type="submit"
                 variant="contained"
                 onClick={handleCreateUser}>
-                Continue
+                Continue To Shipping
               </Button>
-              
               </div>
           </Box>
         </Grid>

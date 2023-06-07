@@ -9,10 +9,12 @@ const About = () => {
     <div style={{marginTop: '10vh'}} id='about'>
 
         <img src={beach} style={{width: '100vw', height: '100vh'}}></img>    
-        <div style={{justifyContent: 'center', alignItems: 'center'}}>   
-        <Typography>Are you a laid back guy or gal?</Typography>
-        <Typography>Is all you want to do is relax on the beach? </Typography>
+        <div className='about-title'>   
+        <Typography variant='h4'>Are you a laid back guy or gal? <br></br>Is all you want to do is relax on the beach? </Typography>
         </div> 
+        <div className='about-section'>
+
+        </div>
         <Box style={{maringTop: '20vh'}}>
             <Grid container style={{justifyContent: 'center', alignItems: 'center'}}>
                 <Grid item xs={5}>

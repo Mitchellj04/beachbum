@@ -1,6 +1,7 @@
 import { Button, Grid, Typography } from '@mui/material';
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
+import './Confirm.css'
 
 const Confirm = () => {
 
@@ -11,7 +12,7 @@ const Confirm = () => {
     console.log(user)
 
   return (
-    <div style={{marginTop: 100}}>
+    <div style={{marginTop: 100}} className='confirm'>
       <Grid container>
           <Grid item xs={5}>
               <Typography variant='h4'>Information</Typography>
@@ -23,7 +24,7 @@ const Confirm = () => {
               </div>
               <div>
                 <Typography variant='h4'>Shipping Information</Typography>
-                
+
               </div>
           </Grid>
           <Grid item xs={5}>

@@ -43,10 +43,10 @@ const Products = () => {
     }
 
     const mapProducts = products.map((item) => {
-        return <Grid item xs={5} className='product-grid-item'>
+        return <Grid item xs={4} className='product-grid-item'>
                 <Card className='product-card'>
                     <CardActionArea onClick={() => handleProjectItem(item)}>
-                        <CardMedia component='img' image={item.image} style={{width: 500}}></CardMedia>
+                        <CardMedia component='img' image={item.image} ></CardMedia>
                     </CardActionArea>
                         <CardContent>
                             <Typography variant={'h5'}>{item.title}</Typography>

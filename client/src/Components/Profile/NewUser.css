@@ -1,5 +1,6 @@
 .newuser-form {
-
+    max-width: 1220px;
+    margin: 0 auto;
 }
 
 form {
@@ -9,6 +10,22 @@ form {
 
 .order-info {
     margin: 20px;
+}
+
+.shipping-info {
+    margin-top: 50px;
+}
+
+.form-footer {
+    display: flex;
+    margin-top: 1.5rem;
+    position: relative;
+    justify-content: space-between;
+}
+
+.form-footer .btn {
+    padding: 1.4rem 1.7rem;
+    background-color: rgb(116, 131, 227);
 }
 
 table{

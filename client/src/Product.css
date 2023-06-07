@@ -1,4 +1,7 @@
 .product-div{
+    
+    max-width: 1220px;
+    margin: 0 auto;
     margin-top: 20vh;
 }
 
