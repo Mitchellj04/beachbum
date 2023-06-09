@@ -46,7 +46,7 @@ const Sign = () => {
   const handleSignIn = (e) => {
     e.preventDefault();
     dispatch(userSignIn(customer));
-    navigate("/confirm");
+    // navigate("/confirm");
   };
 
   return (

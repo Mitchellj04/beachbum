@@ -12,7 +12,7 @@ const Checkout = () => {
     const [loggedIn, setLoggedIn] = useState(true)
     console.log(userLoggedIn)
 
-    // if (userLoggedIn === true) {navigate('/confirm')}
+    if (userLoggedIn === true) {navigate('/confirm')}
   return (
     <div style={{marginTop: 100}} className='checkout'>
        {loggedIn ? (

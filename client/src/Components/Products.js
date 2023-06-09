@@ -10,10 +10,10 @@ import FormControl from '@mui/material/FormControl';
 import '../Product.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllProducts, fetchProductItem } from '../Redux/Products /ProductSlice'
-import pants  from '../Products/pants1.jpg'
-import pants2 from '../Products/pants2.jpg'
-import shirt1 from '../Products/shirt1.jpg'
-import shirt2 from '../Products/shirt2.jpg'
+// import pants  from '/public/Products/pants1.jpg'
+// import pants2 from '/public/Products/pants2.jpg'
+// import shirt1 from '/public/Products/shirt1.jpg'
+// import shirt2 from '/public/Products/shirt2.jpg'
 import { addCart } from '../Redux/Cart/CartSlice'
 import { useNavigate } from 'react-router-dom';
 

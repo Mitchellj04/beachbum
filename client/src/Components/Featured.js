@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Carousel from 'react-material-ui-carousel'
 import { Box, Button, Card, CardActionArea, CardContent, CardHeader, CardMedia, Grid, Link, Typography } from '@mui/material'
-import swim from '../Products/swim1.jpg'
+// import swim from '../Products/swim1.jpg'
 import { useNavigate } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllProducts } from '../Redux/Products /ProductSlice'

@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
     skip_before_action :authorize
+    skip_before_action :authorize_admin
 
     def index 
         orders = Order.all

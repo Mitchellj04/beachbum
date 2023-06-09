@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import { Alert, Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,6 +24,7 @@ const NewUser = () => {
   const user = useSelector((state) => state.user.user);
   const order = useSelector((state) => state.cart);
   const loggedIn = useSelector((state) => state.user.userLoggedIn);
+  const errorMessage = useSelector((state) => state.user.errors);
 
   console.log(order)
 
@@ -47,7 +48,7 @@ const NewUser = () => {
   const handleCreateUser = (e) => {
     e.preventDefault();
     dispatch(createUser(newUser));
-    navigate("/confirm");
+    // navigate("/confirm");
   };
 
   console.log(user);
@@ -117,7 +118,10 @@ const NewUser = () => {
                 />
               </div>
  
-            </form>             
+            </form>            
+            {errorMessage.slice(0,1).map((text) => {
+                return <Alert severity="error">{text}</Alert>;
+              })}            
             <div className="form-footer">
             
              
@@ -130,6 +134,7 @@ const NewUser = () => {
                 Continue To Shipping
               </Button>
               </div>
+   
           </Box>
         </Grid>
         <Grid item xs={5}>
