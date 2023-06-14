@@ -39,7 +39,7 @@ p12 = Product.create(title: 'Stretch Pants', size: 'XL', color: 'Dark Blue', pri
 order1 = Order.create(subtotal: '195.65', user_id: u1.id)
 
 
-# order1.products << [p1, p2, p3]
+order1.products << [p1, p2, p3]
 
 
 

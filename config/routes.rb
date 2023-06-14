@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   resources :categories
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
+  post '/checkout', to: 'checkout#create'
   post '/login', to: 'sessions#create'
   post '/admin', to: 'sessions#admin'
+  get '/products-all', to: 'products#index'
   # Defines the root path route ("/")
   # root "articles#index"
 end

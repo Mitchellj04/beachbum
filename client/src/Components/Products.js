@@ -29,7 +29,9 @@ const Products = () => {
     const products = useSelector((state) => state.products.products)
     const cart = useSelector((state) => state.cart)
 
-    console.log(cart)
+
+
+    console.log(products)
 
     const handleAddToCart = (product) => {
         dispatch(addCart(product))
@@ -61,7 +63,7 @@ const Products = () => {
   return (
     <div className='product-div'>
           <div className='filter-dropdown'>
-      <Accordion>
+      {/* <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -86,7 +88,7 @@ const Products = () => {
         </Select>
       </FormControl>
         </AccordionDetails>
-      </Accordion>
+      </Accordion> */}
     </div>
         <Grid container className='product-grid'>
             {mapProducts}

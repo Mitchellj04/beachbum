@@ -1,0 +1,8 @@
+const stripe = Stripe("<%= Rails.application.credentials[:Stripe][:public]%>");
+
+
+  stripe.redirectToCheckout({
+    sessionId: '<%= @session.id%>'
+  }).then(function (result) {
+    
+  })

@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 export const fetchAllProducts = createAsyncThunk('products/fetchAllProducts', () => {
-    return fetch('/products')
-    .then((r) => r.json())
+    return fetch('/products-all')
+    .then((resp) => resp.json())
     .then((items) => items)
+
 })
 
 export const fetchProductItem = createAsyncThunk('product/fetchProductITem', (id) => {
@@ -25,7 +26,7 @@ const productSlice = createSlice({
     extraReducers: (builder) => {
         builder 
         .addCase(fetchAllProducts.fulfilled, (state, action) => {
-                // console.log(action.payload)
+                console.log(action.payload)
                 state.products = action.payload
                 state.errors = []
         })
