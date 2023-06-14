@@ -13,13 +13,14 @@ class SessionsController < ApplicationController
     end
 
     def admin 
-        amdin = Admin.find_by(username: params[:username])
+        admin = Admin.find_by(username: params[:username])
         if admin&.authenticate(params[:password])
             session[:admin_id] = admin.id
             render json: admin, status: :created
         else
             render json: {errors: ["Must be a valid Username or Password"]}, status: :unauthorized
         end
+        # debugger
     end
 
 

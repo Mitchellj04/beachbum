@@ -10,6 +10,7 @@ OrderItem.delete_all
 Product.delete_all
 User.delete_all
 Order.delete_all
+Admin.delete_all
 
 u1 = User.create(name: 'Justin Mitchell', address: '1080 Dunbar Hill Road', email: 'mitchelljm04@gmail.com', phone: '203-909-0635', password: 'January499!')
 
@@ -42,4 +43,4 @@ order1 = Order.create(subtotal: '195.65', user_id: u1.id)
 
 
 
-amdin = Admin.create(username: 'Justin.Mitchell', password: 'Justin123')
+admin = Admin.create(username: "Justin123", password: "Justin123")

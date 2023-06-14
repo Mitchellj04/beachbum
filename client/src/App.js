@@ -11,7 +11,7 @@ import Checkout from './Components/Profile/Checkout';
 import Confirm from './Components/Checkout/Confirm';
 import Payment from './Components/Checkout/Payment';
 import AdminUpload from './Components/Admin/AdminUpload';
-import AdminLogin from './Components/Admin/AdminLogin';
+import AdminLogin2 from './Components/Admin/AdminLogin2';
 
 
 
@@ -30,7 +30,7 @@ function App() {
           <Route path='/confirm' element={<Confirm />} />
           <Route path='/payment' element={<Payment />} />
           <Route path='/admin' element={<AdminUpload />}/>
-          <Route path='/admin/login' element={<AdminLogin />} />
+          <Route path='/admin/login' element={<AdminLogin2 />} />
         </Routes>
     </div>
   );

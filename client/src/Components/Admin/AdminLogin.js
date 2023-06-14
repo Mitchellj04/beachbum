@@ -9,12 +9,16 @@ import {
     TextField,
     Typography,
   } from "@mui/material";
+import { useDispatch } from 'react-redux';
+import { adminSignIn } from '../../Redux/Admin/AdminSlice';
 
 const AdminLogin = () => {
     
     const fieldStyle = {
     margin: "5px auto",
   };
+
+    const dispatch = useDispatch();
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -24,15 +28,11 @@ const AdminLogin = () => {
         password
     }
 
+
+
     const handleSignIn = (e) => {
         e.preventDefault()
-        // fetch('/admin', {
-        //     method: "POST",
-        //     headers: {'Content-Type': 'application/json'},
-        //     body: JSON.stringify(admin)
-        // })
-        // .then((resp) => resp.json)
-        // .then((auth) => console.log(auth))
+        dispatch(adminSignIn(admin))
     }
 
   return (
