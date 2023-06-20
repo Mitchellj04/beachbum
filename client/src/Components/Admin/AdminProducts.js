@@ -1,41 +1,31 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllProducts } from '../../Redux/Products /ProductSlice'
+import React, { useState } from 'react'
 import { Box, Button, Card, CardActionArea, CardContent, CardHeader, CardMedia, Grid, InputLabel, Link, Typography } from '@mui/material'
+import AdminProductEdit from './AdminProductEdit'
 
-const AdminProducts = () => {
-    const dispatch = useDispatch()
+const AdminProducts = ({item}) => {
+    
+    const [hideEditProduct, setHideEditProduct] = useState(false)
+    console.log(hideEditProduct)
+    
 
-    useEffect(() => {
-        dispatch(fetchAllProducts())
-    },[])
-
- 
-    const products = useSelector((state) => state.products.products)
-    console.log(products)
-
-
-    const handleProjectEdit = (item) => {
-        
+    const handleProductEdit = () => {
+        setHideEditProduct(true)
     }
 
-    const mapProducts = products.map((item) => {
-        return <Grid item xs={4} className='product-grid-item'>
+
+  return (
+    <div>
+<Grid item xs={4} className='product-grid-item'>
                 <Card className='product-card'>
-                    <CardActionArea onClick={() => handleProjectEdit(item)}>
                         <CardMedia component='img' image={item.image} ></CardMedia>
                         <CardContent>
                             <Typography variant={'h5'}>{item.title}</Typography>
                             <Typography>$ {item.price}</Typography>
                         </CardContent>
-                    </CardActionArea>
+                        {<AdminProductEdit product={item} hideEditProduct={hideEditProduct} setHideEditProduct={setHideEditProduct}/>}
+                        <Button onClick={() => handleProductEdit(item)}>Edit</Button>
                 </Card>
             </Grid>
-    })
-
-  return (
-    <div>
-        {mapProducts}
     </div>
   )
 }

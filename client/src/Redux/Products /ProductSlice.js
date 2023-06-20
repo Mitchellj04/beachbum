@@ -13,6 +13,14 @@ export const fetchProductItem = createAsyncThunk('product/fetchProductITem', (id
     .then((data) => data)
 })
 
+export const editProductItem = createAsyncThunk('product/editProductItem', (newProduct) => {
+    return fetch('/products/edit', {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(newProduct)
+    })
+})
+
 const initialState = {
     products: [],
     item: [],
