@@ -12,6 +12,9 @@ import Confirm from './Components/Checkout/Confirm';
 import Payment from './Components/Checkout/Payment';
 import AdminUpload from './Components/Admin/AdminUpload';
 import AdminLogin2 from './Components/Admin/AdminLogin2';
+import AdminProducts from './Components/Admin/AdminProducts';
+
+
 
 
 
@@ -31,6 +34,7 @@ function App() {
           <Route path='/payment' element={<Payment />} />
           <Route path='/admin' element={<AdminUpload />}/>
           <Route path='/admin/login' element={<AdminLogin2 />} />
+          <Route path='/admin/edit' element={<AdminProducts />}/>
         </Routes>
     </div>
   );
