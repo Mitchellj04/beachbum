@@ -13,11 +13,24 @@ export const fetchProductItem = createAsyncThunk('product/fetchProductITem', (id
     .then((data) => data)
 })
 
-export const editProductItem = createAsyncThunk('product/editProductItem', (newProduct) => {
-    return fetch('/products/edit', {
-        method: "PUT",
+export const editProductItem = createAsyncThunk('product/editProductItem', ({id, editedProduct}) => {
+    console.log(id)
+    console.log(editedProduct)
+    fetch(`/products/${id}`, {
+        method: "PATCH",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(newProduct)
+        body: JSON.stringify(editedProduct)
+    })
+    .then((resp) => resp.json())
+    .then(data => data)
+    return {id, editedProduct}
+})
+
+export const newProductItem = createAsyncThunk('product/newProductItem', (data) => {
+    console.log(data)
+    return fetch('/products', {
+        method: 'POST',
+        body: data
     })
 })
 
@@ -41,6 +54,18 @@ const productSlice = createSlice({
         .addCase(fetchProductItem.fulfilled, (state, action) => {
            state.item = action.payload
            state.errors = []
+        })
+        .addCase(editProductItem.fulfilled, (state, action) => {
+            const index = state.products.findIndex((product) => product.id === action.payload.id)
+            console.log(index)
+            state.product[index] = {
+                ...state.products[index],
+                ...action.payload.editedProduct
+            }
+        })
+        .addCase(newProductItem.fulfilled, (state, action) => {
+            console.log(state)
+            console.log(action.payload)
         })
     }
 })

@@ -12,13 +12,15 @@ const AdminProducts = ({item}) => {
         setHideEditProduct(true)
     }
 
+    console.log(item.image)
 
   return (
     <div>
 <Grid item xs={4} className='product-grid-item'>
                 <Card className='product-card'>
-                        <CardMedia component='img' image={item.image} ></CardMedia>
+                        {/* <CardMedia component='img' image={item.image} ></CardMedia> */}
                         <CardContent>
+                            <img src={item.image}/>
                             <Typography variant={'h5'}>{item.title}</Typography>
                             <Typography>$ {item.price}</Typography>
                         </CardContent>

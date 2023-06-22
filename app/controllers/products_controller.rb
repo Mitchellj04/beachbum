@@ -18,11 +18,19 @@ class ProductsController < ApplicationController
         render json: product, status: 200
     end
 
+    def create 
+        product = Product.create(product_params)
+        render json: product, status: :created
+        # debugger
+    # rescue ActiveRecord::RecordInvalid => e
+    #     render json: {errors: e.record.errors.full_messages}
+    end
+
 
     private 
 
     def product_params
-        params.require(product).permit(:title, :description, :size, :color, :image, :price)
+        params.require(:product).permit(:title, :size, :color, :image, :price, :category_id)
     end
 
     def find_product 

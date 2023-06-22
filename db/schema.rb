@@ -75,7 +75,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_184911) do
     t.string "title"
     t.string "size"
     t.string "color"
-    t.string "image"
     t.float "price"
     t.integer "category_id"
     t.datetime "created_at", null: false

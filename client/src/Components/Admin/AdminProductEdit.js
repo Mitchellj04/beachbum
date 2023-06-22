@@ -9,6 +9,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
+import { editProductItem } from "../../Redux/Products /ProductSlice";
 
 const AdminProductEdit = ({ product, hideEditProduct, setHideEditProduct }) => {
 
@@ -21,6 +22,19 @@ const AdminProductEdit = ({ product, hideEditProduct, setHideEditProduct }) => {
     setProductEdit({ ...productEdit, [e.target.name]: e.target.value });
   };
 
+  const handleFileUpload = (e) => {
+    setProductEdit({...productEdit, [e.target.name]: e.target.files[0]})
+  }
+
+  console.log(productEdit)
+
+  const editedProduct = {
+    title: productEdit.title,
+    size: productEdit.size,
+    color: productEdit.color,
+    image: productEdit.image,
+    price: productEdit.price
+  }
 
   const fieldStyle = {
     margin: "5px auto",
@@ -33,6 +47,7 @@ const AdminProductEdit = ({ product, hideEditProduct, setHideEditProduct }) => {
   const handleProductEdit = (e) => {
     e.preventDefault();
     let id = product.id;
+    dispatch(editProductItem({id, editedProduct}))
   };
 
   return (
@@ -54,19 +69,11 @@ const AdminProductEdit = ({ product, hideEditProduct, setHideEditProduct }) => {
               value={productEdit.title}
               onChange={handleChange}
             />
-            <TextField
-              fullWidth
-              label="description"
-              name="description"
-              style={fieldStyle}
-              value={productEdit.description}
-              onChange={handleChange}
-            />
             <input
               type="file"
               label="image"
               name="image"
-              onChange={handleChange}>
+              onChange={handleFileUpload}>
               </input>
             <TextField
               fullWidth
@@ -86,6 +93,7 @@ const AdminProductEdit = ({ product, hideEditProduct, setHideEditProduct }) => {
             />
             <TextField
               fullWidth
+              type="number"
               label="price"
               name="price"
               style={fieldStyle}

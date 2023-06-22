@@ -46,7 +46,9 @@ group :development do
   # gem "spring"
 end
 
-gem 'stripe'
+# gem 'stripe'
 
 
 gem "active_model_serializers", "~> 0.10.13"
+
+gem "aws-sdk-s3", "~> 1.126", require: false
