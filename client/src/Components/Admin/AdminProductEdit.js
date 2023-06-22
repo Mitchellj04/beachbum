@@ -46,8 +46,14 @@ const AdminProductEdit = ({ product, hideEditProduct, setHideEditProduct }) => {
 
   const handleProductEdit = (e) => {
     e.preventDefault();
-    let id = product.id;
-    dispatch(editProductItem({id, editedProduct}))
+    let id = product.id
+    const data = new FormData()
+    data.append('product[title]', productEdit.title)
+    data.append('product[price]', productEdit.price)
+    data.append('product[image]', productEdit.image)
+    data.append('product[color]', productEdit.color)
+    data.append('product[size]', productEdit.size)
+    dispatch(editProductItem({id, data}))
   };
 
   return (

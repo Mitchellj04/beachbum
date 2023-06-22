@@ -13,17 +13,16 @@ export const fetchProductItem = createAsyncThunk('product/fetchProductITem', (id
     .then((data) => data)
 })
 
-export const editProductItem = createAsyncThunk('product/editProductItem', ({id, editedProduct}) => {
+export const editProductItem = createAsyncThunk('product/editProductItem', ({id, data}) => {
     console.log(id)
-    console.log(editedProduct)
-    fetch(`/products/${id}`, {
+    console.log(data)
+   return  fetch(`/products/${id}`, {
         method: "PATCH",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(editedProduct)
+        body: data
     })
     .then((resp) => resp.json())
     .then(data => data)
-    return {id, editedProduct}
+    // {id, data}
 })
 
 export const newProductItem = createAsyncThunk('product/newProductItem', (data) => {
@@ -32,6 +31,8 @@ export const newProductItem = createAsyncThunk('product/newProductItem', (data) 
         method: 'POST',
         body: data
     })
+    .then((resp) => resp.json())
+    .then(data => data)
 })
 
 const initialState = {
@@ -58,14 +59,19 @@ const productSlice = createSlice({
         .addCase(editProductItem.fulfilled, (state, action) => {
             const index = state.products.findIndex((product) => product.id === action.payload.id)
             console.log(index)
+            console.log(action.payload)
             state.product[index] = {
                 ...state.products[index],
-                ...action.payload.editedProduct
+                ...action.payload
             }
         })
         .addCase(newProductItem.fulfilled, (state, action) => {
-            console.log(state)
-            console.log(action.payload)
+            if(action.payload.errors){
+                state.errors = action.payload.errors
+            }
+            else {
+                state.products.push(action.payload)
+            }
         })
     }
 })

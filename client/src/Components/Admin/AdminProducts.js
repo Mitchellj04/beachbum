@@ -15,7 +15,7 @@ const AdminProducts = ({item}) => {
     console.log(item.image)
 
   return (
-    <div>
+    <div >
 <Grid item xs={4} className='product-grid-item'>
                 <Card className='product-card'>
                         {/* <CardMedia component='img' image={item.image} ></CardMedia> */}

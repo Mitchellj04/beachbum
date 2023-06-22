@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import './Admin.css'
 import { useDispatch } from 'react-redux';
 import { newProductItem } from '../../Redux/Products /ProductSlice';
+import { useNavigate } from 'react-router-dom';
 
 const AdminUpload = () => {
 
@@ -14,6 +15,7 @@ const AdminUpload = () => {
     const [price, setPrice] = useState('')
     const [image, setImage] = useState('')
 
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     console.log(image)
 
@@ -35,8 +37,9 @@ const AdminUpload = () => {
       data.append('product[image]', image)
       data.append('product[color]', 'blue')
       data.append('product[size]', "M")
-      data.append('product[category_id]', 10)
+      data.append('product[category_id]', 14)
       dispatch(newProductItem(data))
+      navigate('/admin/edit')
     }
 
   return (
