@@ -9,9 +9,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { adminSignIn } from '../../Redux/Admin/AdminSlice';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Alert } from '@mui/material';
 
 function Copyright() {
   return (
@@ -29,34 +31,37 @@ function Copyright() {
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function AdminLogin2() {
+export default function AdminLogin2({error}) {
 
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const admin = useSelector((state) => state.admin.admin)
+  const errors = useSelector((state) => state.admin.errors)
+  const adminLoggedIn = useSelector((state) => state.admin.adminLoggedIn)
+  const navigate = useNavigate()
 
-  const admin = {
+  const user = {
       username,
       password
   }
 
 
+  console.log(adminLoggedIn)
 
   const handleSignIn = (e) => {
       e.preventDefault()
-      dispatch(adminSignIn(admin))
+      dispatch(adminSignIn(user))
+      if(adminLoggedIn === true){
+        navigate('/admin/edit')
+      }
+      else{
+        console.log(errors)
+      }
   }
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const data = new FormData(e.currentTarget);
-  //   console.log({
-  //     username: data.get('email'),
-  //     password: data.get('password'),
-  //   });
-  // };
-
+  
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -113,6 +118,9 @@ export default function AdminLogin2() {
             >
               Sign In
             </Button>
+            {error.map((err) => {
+              return <Alert key={err} severity='error'>{err}</Alert>
+            })}
           </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />

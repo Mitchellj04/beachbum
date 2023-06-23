@@ -35,6 +35,14 @@ export const newProductItem = createAsyncThunk('product/newProductItem', (data) 
     .then(data => data)
 })
 
+export const deleteProductItem = createAsyncThunk('product/deleteProductItem', (item) => {
+    fetch(`/products/${item.id}`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'}
+    })
+    return item.id
+})
+
 const initialState = {
     products: [],
     item: [],
@@ -72,6 +80,10 @@ const productSlice = createSlice({
             else {
                 state.products.push(action.payload)
             }
+        })
+        .addCase(deleteProductItem.fulfilled, (state, action) => {
+            const index = state.products.findIndex(({id}) => id === action.payload)
+            state.products.splice(index, 1)
         })
     }
 })

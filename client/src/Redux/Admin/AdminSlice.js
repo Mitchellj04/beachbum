@@ -37,9 +37,11 @@ const adminSlice = createSlice({
             }
             else {
                 console.log(action.payload)
-                state.admin = action.payload 
                 state.adminLoggedIn = true
                 state.errors = []
+                state.admin = action.payload 
+                
+                
             }
             
         })

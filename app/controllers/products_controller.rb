@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
     skip_before_action :authorize
     skip_before_action :authorize_admin
+    # before_destroy :delete_s3_image
 
     def index 
         product = Product.all
@@ -26,6 +27,14 @@ class ProductsController < ApplicationController
     #     render json: {errors: e.record.errors.full_messages}
     end
 
+    def destroy
+        product = find_product
+        image = product.image.attachment
+        image.purge
+        product.delete
+        head :no_content
+    end
+
 
     private 
 
@@ -35,5 +44,10 @@ class ProductsController < ApplicationController
 
     def find_product 
         Product.find(params[:id])
+    end
+
+    def delete_s3_image
+        key = self.image.key.split('amazonaws.com/')[1]
+        S3_BUCKET.object(key).delete
     end
 end
