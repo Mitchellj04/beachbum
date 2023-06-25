@@ -49,6 +49,7 @@ export default function AdminLogin2({error}) {
 
 
   console.log(adminLoggedIn)
+  console.log(admin)
 
   const handleSignIn = (e) => {
       e.preventDefault()

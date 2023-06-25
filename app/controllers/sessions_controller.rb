@@ -20,7 +20,6 @@ class SessionsController < ApplicationController
         else
             render json: {errors: ["Must be a valid Username or Password"]}, status: :unauthorized
         end
-        # debugger
     end
 
 
