@@ -4,6 +4,7 @@ import CartSlice from "../Redux/Cart/CartSlice";
 import OrderSlice from "../Redux/Orders/OrderSlice";
 import UserSlice from "../Redux/User/UserSlice";
 import AdminSlice from "../Redux/Admin/AdminSlice";
+import categorySlice from "../Redux/Category/categorySlice";
 
 
 
@@ -14,7 +15,8 @@ const store = configureStore({
         cart: CartSlice,
         order: OrderSlice,
         user: UserSlice,
-        admin: AdminSlice
+        admin: AdminSlice,
+        category: categorySlice
     }
 })
 
