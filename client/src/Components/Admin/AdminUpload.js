@@ -1,5 +1,5 @@
 import { Button, TextField, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Admin.css'
 import { useDispatch } from 'react-redux';
 import { newProductItem } from '../../Redux/Products /ProductSlice';
@@ -17,6 +17,10 @@ const AdminUpload = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+
+    useEffect(() => {
+      dispatch(cat)
+    },[])
     console.log(image)
 
     // const newProduct = {

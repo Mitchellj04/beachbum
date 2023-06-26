@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   post '/admin', to: 'sessions#admin'
   get '/products-all', to: 'products#index'
+  get '/admin', to: 'admins#login'
   # Defines the root path route ("/")
   # root "articles#index"
 end
