@@ -43,7 +43,7 @@ const AdminUpload = () => {
   // }
 
   const cat_id = categories.filter((name) => name.item === category)
-  console.log(cat_id[0].id)
+  console.log(cat_id)
 
   const createNewItem = (e) => {
     e.preventDefault();
@@ -87,7 +87,7 @@ const AdminUpload = () => {
               onChange={(e) => setPrice(e.target.value)}
             />
             <FormControl>
-              <FormLabel id="category-buttons-group-label">Gender</FormLabel>
+              <FormLabel id="category-buttons-group-label">Category</FormLabel>
               <RadioGroup
                 aria-labelledby="radio-buttons-group-label"
                 defaultValue="shirt"
@@ -95,9 +95,9 @@ const AdminUpload = () => {
                 onChange={handleCategory}
               >
                 <FormControlLabel
-                  value={"shirt"}
+                  value={"Shirt"}
                   control={<Radio />}
-                  label={"shirt"}
+                  label={"Shirt"}
                 />
                 <FormControlLabel
                   value={"Shorts"}
@@ -110,7 +110,7 @@ const AdminUpload = () => {
                   label={"Long Sleeve"}
                 />
                 <FormControlLabel
-                  value={"Swim"}
+                  value={"Swim suit"}
                   control={<Radio />}
                   label={"Swim"}
                 />
