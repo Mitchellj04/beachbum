@@ -20,11 +20,11 @@ class ProductsController < ApplicationController
     end
 
     def create 
-        product = Product.create(product_params)
+        product = Product.create!(product_params)
         render json: product, status: :created
         # debugger
-    # rescue ActiveRecord::RecordInvalid => e
-    #     render json: {errors: e.record.errors.full_messages}
+    rescue ActiveRecord::RecordInvalid => e
+        render json: {errors: e.record.errors.full_messages}
     end
 
     def destroy
@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
     private 
 
     def product_params
-        params.require(:product).permit(:title, :size, :color, :image, :price, :category_id)
+        params.require(:product).permit(:title, :size, :color, :image, :price, :category_id, :gender_id)
     end
 
     def find_product 

@@ -10,6 +10,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import { fetchAllGender } from "../../Redux/Gender/genderSlice";
 
 const AdminUpload = () => {
   const fieldStyle = {
@@ -20,17 +21,21 @@ const AdminUpload = () => {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
+  const [gender, setGender] = useState("")
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.category.category);
+  const genders = useSelector((state) => state.gender.gender)
 
   useEffect(() => {
     dispatch(fetchAllCategory());
+    dispatch(fetchAllGender())
   }, []);
 
   console.log(image);
-  console.log(category);
+  console.log(categories);
+  console.log(genders)
 
   // const newProduct = {
   //   product: {title,
@@ -43,6 +48,7 @@ const AdminUpload = () => {
   // }
 
   const cat_id = categories.filter((name) => name.item === category)
+  const gender_id = genders.filter((type) => type.gender === gender)
   console.log(cat_id)
 
   const createNewItem = (e) => {
@@ -53,7 +59,9 @@ const AdminUpload = () => {
     data.append("product[image]", image);
     data.append("product[color]", "blue");
     data.append("product[size]", "M");
+    data.append("product[gender_id]", gender_id[0].id)
     data.append("product[category_id]", cat_id[0].id);
+    console.log(data)
     dispatch(newProductItem(data));
     navigate("/admin/edit");
   };
@@ -61,6 +69,10 @@ const AdminUpload = () => {
   const handleCategory = (e) => {
     setCategory(e.target.value);
   };
+
+  const handleGender = (e) => {
+    setGender(e.target.value)
+  }
 
   return (
     <div style={{ marginTop: "100px" }}>
@@ -118,6 +130,26 @@ const AdminUpload = () => {
                   value={"Pants"}
                   control={<Radio />}
                   label={"Pants"}
+                />
+              </RadioGroup>
+            </FormControl>
+            <FormControl>
+              <FormLabel id="category-buttons-group-label">Gender</FormLabel>
+              <RadioGroup
+                aria-labelledby="radio-buttons-group-label"
+                defaultValue="shirt"
+                name="radio-buttons-group"
+                onChange={handleGender}
+              >
+                <FormControlLabel
+                  value={"Male"}
+                  control={<Radio />}
+                  label={"Male"}
+                />
+                <FormControlLabel
+                  value={"Female"}
+                  control={<Radio />}
+                  label={"Female"}
                 />
               </RadioGroup>
             </FormControl>

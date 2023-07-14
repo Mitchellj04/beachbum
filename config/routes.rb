@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :genders
   resources :admins
   resources :orders
   resources :carts

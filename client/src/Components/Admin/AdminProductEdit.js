@@ -8,33 +8,49 @@ import {
   Input,
   TextField,
 } from "@mui/material";
-import { useDispatch } from "react-redux";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import { useDispatch, useSelector } from "react-redux";
 import { editProductItem } from "../../Redux/Products /ProductSlice";
+import { fetchAllGender } from "../../Redux/Gender/genderSlice";
 
 const AdminProductEdit = ({ product, hideEditProduct, setHideEditProduct }) => {
-
-    console.log(product)
-    
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchAllGender());
+  }, []);
+
+  const genders = useSelector((state) => state.gender.gender);
+  const [gender, setGender] = useState("");
+
   const [productEdit, setProductEdit] = useState(product);
+
   const handleChange = (e) => {
     setProductEdit({ ...productEdit, [e.target.name]: e.target.value });
   };
 
-  const handleFileUpload = (e) => {
-    setProductEdit({...productEdit, [e.target.name]: e.target.files[0]})
-  }
+  const handleGender = (e) => {
+    setGender(e.target.value);
+  };
 
-  console.log(productEdit)
+  const handleFileUpload = (e) => {
+    setProductEdit({ ...productEdit, [e.target.name]: e.target.files[0] });
+  };
+
+  const gender_id = genders.filter((item) => item.gender === gender);
+  console.log(gender_id);
 
   const editedProduct = {
     title: productEdit.title,
     size: productEdit.size,
     color: productEdit.color,
     image: productEdit.image,
-    price: productEdit.price
-  }
+    price: productEdit.price,
+  };
 
   const fieldStyle = {
     margin: "5px auto",
@@ -46,14 +62,15 @@ const AdminProductEdit = ({ product, hideEditProduct, setHideEditProduct }) => {
 
   const handleProductEdit = (e) => {
     e.preventDefault();
-    let id = product.id
-    const data = new FormData()
-    data.append('product[title]', productEdit.title)
-    data.append('product[price]', productEdit.price)
-    data.append('product[image]', productEdit.image)
-    data.append('product[color]', productEdit.color)
-    data.append('product[size]', productEdit.size)
-    dispatch(editProductItem({id, data}))
+    let id = product.id;
+    const data = new FormData();
+    data.append("product[title]", productEdit.title);
+    data.append("product[price]", productEdit.price);
+    data.append("product[image]", productEdit.image);
+    data.append("product[color]", productEdit.color);
+    data.append("product[size]", productEdit.size);
+    data.append("product[gender]", gender_id[0].id);
+    dispatch(editProductItem({ id, data }));
   };
 
   return (
@@ -79,8 +96,8 @@ const AdminProductEdit = ({ product, hideEditProduct, setHideEditProduct }) => {
               type="file"
               label="image"
               name="image"
-              onChange={handleFileUpload}>
-              </input>
+              onChange={handleFileUpload}
+            ></input>
             <TextField
               fullWidth
               label="size"
@@ -106,6 +123,28 @@ const AdminProductEdit = ({ product, hideEditProduct, setHideEditProduct }) => {
               value={productEdit.price}
               onChange={handleChange}
             />
+            <FormControl>
+              <FormLabel id="demo-controlled-radio-buttons-group">
+                Gender
+              </FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-controlled-radio-buttons-group"
+                defaultValue={'Male'}
+                name="controlled-radio-buttons-group"
+                onChange={handleGender}
+              >
+                <FormControlLabel
+                  value="Female"
+                  control={<Radio />}
+                  label="Female"
+                />
+                <FormControlLabel
+                  value="Male"
+                  control={<Radio />}
+                  label="Male"
+                />
+              </RadioGroup>
+            </FormControl>
           </DialogContent>
           <DialogActions>
             <Button type="submit">Submit</Button>

@@ -119,9 +119,9 @@ export default function AdminLogin2({error}) {
             >
               Sign In
             </Button>
-            {error.map((err) => {
+            {/* {error.map((err) => {
               return <Alert key={err} severity='error'>{err}</Alert>
-            })}
+            })} */}
           </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />

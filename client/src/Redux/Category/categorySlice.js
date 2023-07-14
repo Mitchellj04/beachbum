@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
-export const fetchAllCategory = createAsyncThunk('products/fetchAllProducts', () => {
+export const fetchAllCategory = createAsyncThunk('category/fetchAllCategory', () => {
     return fetch('/categories')
     .then((resp) => resp.json())
     .then((items) => items)

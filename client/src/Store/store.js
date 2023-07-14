@@ -5,6 +5,7 @@ import OrderSlice from "../Redux/Orders/OrderSlice";
 import UserSlice from "../Redux/User/UserSlice";
 import AdminSlice from "../Redux/Admin/AdminSlice";
 import categorySlice from "../Redux/Category/categorySlice";
+import genderSlice from "../Redux/Gender/genderSlice";
 
 
 
@@ -16,7 +17,8 @@ const store = configureStore({
         order: OrderSlice,
         user: UserSlice,
         admin: AdminSlice,
-        category: categorySlice
+        category: categorySlice,
+        gender: genderSlice
     }
 })
 

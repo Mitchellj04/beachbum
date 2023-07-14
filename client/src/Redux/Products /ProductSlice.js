@@ -76,8 +76,10 @@ const productSlice = createSlice({
         .addCase(newProductItem.fulfilled, (state, action) => {
             if(action.payload.errors){
                 state.errors = action.payload.errors
+                console.log(action.payload)
             }
             else {
+                console.log(action.payload)
                 state.products.push(action.payload)
             }
         })

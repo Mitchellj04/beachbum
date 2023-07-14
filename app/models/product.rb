@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
     belongs_to :category
+    belongs_to :gender
     has_many :order_items, dependent: :destroy
     has_many :orders, through: :order_items
     has_one_attached :image, :dependent => :destroy

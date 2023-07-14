@@ -4,11 +4,14 @@ import AdminProducts from './AdminProducts'
 import { fetchAllProducts } from '../../Redux/Products /ProductSlice'
 import AdminLogin2 from './AdminLogin2'
 import { adminProfile } from '../../Redux/Admin/AdminSlice'
+import { Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 const AdminProductPage = () => {
 
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const errors = ["Please login first"]
     const adminLoggedIn = useSelector((state) => state.admin.adminLoggedIn)
     const error = useSelector((state) => state.admin.errors)
@@ -28,7 +31,8 @@ const AdminProductPage = () => {
 
     // if(!adminLoggedIn) return <AdminLogin2 error={errors}/>
   return (
-    <div>
+    <div style={{marginTop: 100}}>
+      <Button onClick={() => navigate('/admin/upload')}>Upload</Button>
         {mapProducts }
     </div>
   )

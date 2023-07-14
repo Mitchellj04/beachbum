@@ -5,12 +5,14 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
 Category.delete_all
 OrderItem.delete_all
 Product.delete_all
 User.delete_all
 Order.delete_all
 Admin.delete_all
+Gender.delete_all
 
 u1 = User.create(name: 'Justin Mitchell', address: '1080 Dunbar Hill Road', email: 'mitchelljm04@gmail.com', phone: '203-909-0635', password: 'January499!')
 
@@ -21,8 +23,8 @@ c4 = Category.create(item: 'Swim suit')
 c5 = Category.create(item: 'Pants')
 
 
-p1 = Product.create(title: 'Tie Dye Shirt', size: 'M', color: 'Multi', price: '25.99', category_id: c1.id)
-p2 = Product.create(title: 'Hemp Shirt', size: 'M', color: 'Cream', price: '22.95', category_id: c1.id)
+# p1 = Product.create(title: 'Tie Dye Shirt', size: 'M', color: 'Multi', price: '25.99', category_id: c1.id)
+# p2 = Product.create(title: 'Hemp Shirt', size: 'M', color: 'Cream', price: '22.95', category_id: c1.id)
 # p3 = Product.create(title: 'Stretch Pants', size: 'M', color: 'Tan', price: '45.00', category_id: c5.id)
 # p4 = Product.create(title: 'Stretch Pants', size: 'M', color: 'Light Blue', price: '45.00', category_id: c5.id)
 # p5 = Product.create(title: 'Icon Swim Suit', size: 'M', color: 'Multi', price: '54.00', category_id: c4.id)
@@ -34,9 +36,10 @@ p2 = Product.create(title: 'Hemp Shirt', size: 'M', color: 'Cream', price: '22.9
 # p11 = Product.create(title: 'Lounge Shirt', size: 'L',color: "Blue",price: '54.99',category_id: c3.id)
 # p12 = Product.create(title: 'Stretch Pants', size: 'XL', color: 'Dark Blue', price: '45.00', category_id: c5.id)
 
+g1 = Gender.create(gender: 'Male')
+g2 = Gender.create(gender: 'Female')
 
-
-order1 = Order.create(subtotal: '195.65', user_id: u1.id)
+# order1 = Order.create(subtotal: '195.65', user_id: u1.id)
 
 
 # order1.products << [p1, p2, p3]
