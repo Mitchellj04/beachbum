@@ -9,10 +9,20 @@
     justify-content: center;
 }
 
+.product-filter {
+    display: flex;
+    justify-content: center;
+}
+
 .filter-dropdown {
-    width: 20%;
-    align-items: right;
-    justify-content: right;
+    width: 50%;
+   margin: 20px;
+}
+
+.search-bar {
+    display: flex;
+    width: 50%;
+    margin: 20px;
 }
 
 .product-card {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Button, Card, CardActionArea, CardContent, CardHeader, CardMedia, Grid, InputLabel, Link, Typography } from '@mui/material'
+import { Box, Button, Card, CardActionArea, CardContent, CardHeader, CardMedia, Grid, InputLabel, Link, TextField, Typography } from '@mui/material'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -7,6 +7,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import SearchIcon from '@mui/icons-material/Search';
 import '../Product.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllProducts, fetchProductItem } from '../Redux/Products /ProductSlice'
@@ -26,12 +27,18 @@ const Products = () => {
         dispatch(fetchAllProducts())
     },[])
     // const [products, setProducts] = useState([])
+    const [category, setCategory] = useState("")
     const products = useSelector((state) => state.products.products)
     const cart = useSelector((state) => state.cart)
 
 
+    const handleCategory = (e) => {
+      setCategory(e.target.value)
+    }
 
     console.log(products)
+    const filtered = products.filter((product) => product.category.item === category)
+    console.log(filtered)
 
     const handleAddToCart = (product) => {
         dispatch(addCart(product))
@@ -62,8 +69,9 @@ const Products = () => {
 
   return (
     <div className='product-div'>
+      <div className='product-filter'>
           <div className='filter-dropdown'>
-      {/* <Accordion>
+      <Accordion className='filter-accordion'>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -78,18 +86,38 @@ const Products = () => {
           
           labelId="select-label"
           id="simple-select"
+          value={category}
+          label="Age"
+          onChange={handleCategory}
+        >
+          <MenuItem value={'Shirt'}>Shirt</MenuItem>
+          <MenuItem value={'Pants'}>Pants</MenuItem>
+          <MenuItem value={'Swim'}>Swim</MenuItem>
+        </Select>
+      </FormControl>
+      <FormControl fullWidth>
+        <InputLabel id="select-label">Gender</InputLabel>
+        <Select
+          
+          labelId="select-label"
+          id="simple-select"
         //   value={category}
           label="Age"
         //   onChange={handleChange}
         >
-          <MenuItem value={'shirt'}>Shirt</MenuItem>
-          <MenuItem value={'pants'}>Pants</MenuItem>
-          <MenuItem value={'swim'}>Swim</MenuItem>
+          <MenuItem value={'Male'}>Male</MenuItem>
+          <MenuItem value={'Female'}>Female</MenuItem>
         </Select>
       </FormControl>
         </AccordionDetails>
-      </Accordion> */}
-    </div>
+      </Accordion>
+     
+    
+    </div> 
+    <div className='search-bar'>  <TextField id="standard-basic" label="Search" variant="standard" fullWidth/>
+      <Button startIcon={<SearchIcon/>}></Button>
+</div>
+</div>
         <Grid container className='product-grid'>
             {mapProducts}
         </Grid>
