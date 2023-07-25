@@ -18,13 +18,18 @@ const Confirm = () => {
               <Typography variant='h4'>Information</Typography>
               <div>
                   <Typography>Name: {user.name}</Typography>
-                  <Typography>Address: {user.address}</Typography>
                   <Typography>Phone: {user.phone}</Typography>
                   <Typography>Email: {user.email}</Typography>
               </div>
               <div>
                 <Typography variant='h4'>Shipping Information</Typography>
-
+                <div>
+                <Typography>Name: {user.name}</Typography>
+                  <Typography>Address: {user.address}</Typography>
+                  <Typography>Town: {user.address}</Typography>
+                  <Typography>State: {user.address}</Typography>
+                  <Typography>Zipcode: {user.address}</Typography>
+                </div>
               </div>
           </Grid>
           <Grid item xs={5}>

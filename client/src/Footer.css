@@ -1,0 +1,51 @@
+.wrapper {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.container {
+    display: flex;
+}
+
+.footer-container {
+    display: flex;
+    max-width: 1150px;
+    padding-bottom: 1em;
+    margin-left: auto;
+}
+
+.footer-form {
+    min-width: 18rem;
+}
+
+.form {
+    margin: 0;
+}
+
+.footer-menu-container{
+    display: flex;
+    margin-left: auto;
+    min-width: 31.5em;
+}
+
+.first-box {
+    width: 40%;
+}
+
+.text-field {
+    line-height: 1;
+    width: 100%;
+}
+
+h6 {
+    font-size: 1.75rem;
+    margin-top: 1rem;
+    padding-top: 0.849rem;
+    line-height: 3rem;
+    font-weight: 400;
+}
+
+ul {
+    list-style: none;
+}

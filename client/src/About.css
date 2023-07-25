@@ -1,8 +1,19 @@
-.about{
-
-}
-
 .about-title{
     justify-content: center;
     text-align: center;
+    padding: 20px;
+}
+
+.about-section {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.grid-text {
+    margin: 10 auto;
+    flex: 1 0 auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center
 }

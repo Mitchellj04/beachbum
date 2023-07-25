@@ -11,7 +11,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { cartTotals, decreaseCart, increaseCart, removeItem } from "../Redux/Cart/CartSlice";
+import { cartTotals, decreaseCart, increaseCart, removeItem, clearCart } from "../Redux/Cart/CartSlice";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import '../Cart.css'
 import { createOrder } from "../Redux/Orders/OrderSlice";
@@ -42,6 +42,10 @@ const Cart = () => {
   const increaseCartItem = (product) => {
     dispatch(increaseCart(product))
   } 
+
+  const clearCartItem = () => {
+    dispatch(clearCart())
+  }
 
   const continueCheckout = () => {
     if(cart.cartItems.length === 0){
@@ -138,7 +142,7 @@ const Cart = () => {
                   {shopping}
                   </tbody>
                   </table>
-                  <Button style={{width: 225, margin: 50}} variant='outlined'>Clear</Button>
+                  <Button style={{width: 225, margin: 50}} variant='outlined' onClick={() => clearCartItem()}>Clear</Button>
             </div>      
           <div className='cart-total'>
             <div className="cart-summary-wrapper">
@@ -153,7 +157,7 @@ const Cart = () => {
             <Button className="btn" variant="outlined" onClick={continueCheckout}> Checkout </Button>
             {error.map((er) => <Alert severity="error">{er}</Alert>)}
             
-            <Button className="btn" startIcon={<KeyboardBackspaceIcon />}>Continue Shopping</Button>
+            <Button className="btn" startIcon={<KeyboardBackspaceIcon />} onClick={() => navigate('/products')}>Continue Shopping</Button>
             </div>
    </div>
       </div>

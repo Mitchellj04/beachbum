@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App">
         <Navbar/>
-        <Footer />
+
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/products' element={<Products />}/>
@@ -36,6 +36,7 @@ function App() {
           <Route path='/admin' element={<AdminLogin2 />} />
           <Route path='/admin/edit' element={<AdminProductPage />}/>
         </Routes>
+        <Footer />
     </div>
   );
 }
