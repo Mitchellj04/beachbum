@@ -13,6 +13,7 @@ import Payment from './Components/Checkout/Payment';
 import AdminUpload from './Components/Admin/AdminUpload';
 import AdminLogin2 from './Components/Admin/AdminLogin2';
 import AdminProductPage from './Components/Admin/AdminProductPage';
+import Contact from './Components/Contact';
 
 
 
@@ -25,6 +26,7 @@ function App() {
 
         <Routes>
           <Route path='/' element={<Home />}/>
+          <Route path='/contact' element={<Contact />}/>
           <Route path='/products' element={<Products />}/>
           <Route path='/item' element={<ProductItem/>}/>
           <Route path='/about' element={<About />}/>

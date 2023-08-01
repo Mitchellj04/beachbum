@@ -1,0 +1,23 @@
+.contact {
+    margin-top: 10rem;
+    padding-bottom: 4rem;
+}
+
+.contact-wrapper {
+    padding-bottom: 4rem;
+    max-width: 1220px;
+    margin: 0 auto;
+}
+
+.contact-title {
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 4rem;
+}
+
+.contact-phone {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}

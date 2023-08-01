@@ -25,10 +25,10 @@ const Confirm = () => {
                 <Typography variant='h4'>Shipping Information</Typography>
                 <div>
                 <Typography>Name: {user.name}</Typography>
-                  <Typography>Address: {user.address}</Typography>
-                  <Typography>Town: {user.address}</Typography>
-                  <Typography>State: {user.address}</Typography>
-                  <Typography>Zipcode: {user.address}</Typography>
+                  <Typography>Address: {user.shipping.address}</Typography>
+                  <Typography>Town: {user.shipping.town}</Typography>
+                  <Typography>State: {user.shipping.state}</Typography>
+                  <Typography>Zipcode: {user.shipping.zipcode}</Typography>
                 </div>
               </div>
           </Grid>

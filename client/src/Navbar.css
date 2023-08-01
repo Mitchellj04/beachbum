@@ -42,10 +42,10 @@
     list-style-type: none;
 }
 
-.nav-item .active {
+/* .nav-item .active {
     padding-bottom: 12px;
     border-bottom: 3px solid rgb(235, 203, 87);
-}
+} */
 
 .header .nav-item a:hover {
     padding-bottom: 12px;

@@ -1,9 +1,10 @@
-import { Alert, Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import { Alert, Box, Button, FormControl, Grid, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../Redux/User/UserSlice";
 import { useNavigate } from "react-router-dom";
+import SelectUSState from 'react-select-us-states';
 import "./NewUser.css";
 
 const NewUser = () => {
@@ -17,9 +18,13 @@ const NewUser = () => {
     margin: "100px auto",
   };
 
+
   //Redux Reducer
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+
+
 
   const user = useSelector((state) => state.user.user);
   const order = useSelector((state) => state.cart);
@@ -34,20 +39,30 @@ const NewUser = () => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
+  const [town, setTown] = useState("")
+  const [zipcode, setZipcode] = useState(0)
+  const [state, setState] = useState("")
 
   //New User info
   const newUser = {
     name,
     email,
     phone,
-    address,
-    password,
+    password
   };
 
+  const shipping = {
+    address,
+    town, 
+    zipcode, 
+    state
+  }
+
+  console.log(state)
   //Handle new user fetch
   const handleCreateUser = (e) => {
     e.preventDefault();
-    dispatch(createUser(newUser));
+    dispatch(createUser({newUser, shipping}));
     // navigate("/confirm");
   };
 
@@ -106,6 +121,27 @@ const NewUser = () => {
                   style={fieldStyle}
                   onChange={(e) => setAddress(e.target.value)}
                 />
+                 <TextField
+                  required
+                  autoFocus
+                  variant="standard"
+                  halfwidth
+                  value={town}
+                  label="Town"
+                  style={fieldStyle}
+                  onChange={(e) => setTown(e.target.value)}
+                />
+                <TextField
+                  required
+                  autoFocus
+                  variant="standard"
+                  halfwidth
+                  value={zipcode}
+                  label="zipcode"
+                  style={fieldStyle}
+                  onChange={(e) => setZipcode(e.target.value)}
+                />
+                <SelectUSState value={state} onChange={(e) => setState(e)}></SelectUSState>
                 <TextField
                   required
                   fullWidth

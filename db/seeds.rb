@@ -14,7 +14,8 @@ Order.delete_all
 Admin.delete_all
 Gender.delete_all
 
-u1 = User.create(name: 'Justin Mitchell', address: '1080 Dunbar Hill Road', email: 'mitchelljm04@gmail.com', phone: '203-909-0635', password: 'January499!')
+u1 = User.create(name: 'Justin Mitchell', email: 'mitchelljm04@gmail.com', phone: '203-909-0635', password: 'January499!')
+s1 = Shipping.create(address: '1080 Dunbar Hill Road', town: "Hamden", state: 'CT', zipcode: 06514, user_id: u1.id)
 
 c1 = Category.create(item: 'Shirt')
 c2 = Category.create(item: 'Shorts')

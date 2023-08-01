@@ -1,8 +1,13 @@
-import { Button, TextField } from '@mui/material'
+import { Button, TextField, Link } from '@mui/material'
 import React from 'react'
 import '../Footer.css'
+import { useNavigate } from 'react-router-dom'
 
 const Footer = () => {
+  const navigate = useNavigate()
+
+  const charity = "https://oceanconservancy.org/"
+
   return (
     <div>
       <div className='wrapper'>
@@ -19,16 +24,16 @@ const Footer = () => {
               <div className='first-box'>
                 <h6>Our Story</h6>
                 <ul>
-                  <li>About</li>
-                  <li>Charity</li>
-                  <li>Blog</li>
+                  <li className='footer-item'><Link to="about" spy={true} smooth={true} onClick={()=> navigate('/about')}>About</Link></li>
+                  <li className='footer-item'><Link href={charity} target='_blank' rel='noopener noreferrer'>Charity</Link></li>
+                  <li className='footer-item'><Link href={"https://medium.com/@mitchelljm04"} target='_blank' rel='noopener noreferrer'>Blog</Link></li>
                 </ul>
               </div>
               <div>
-                <h5>Beachbum</h5>
+                <h6>Beachbum</h6>
                 <ul>
-                  <li>Products</li>
-                  <li>Contact</li>
+                  <li className='footer-item'><Link to="products" spy={true} smooth={true} onClick={()=> navigate('/products')}>Products</Link></li>
+                  <li className='footer-item'><Link to="conact" spy={true} smooth={true} onClick={()=> navigate('/contact')}>Contact</Link></li>
                 </ul>
               </div>
           </div>

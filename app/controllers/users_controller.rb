@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
     def create 
         user = User.create!(user_params)
+        shipping = Shipping.create!(shipping_params.include?(user.id))
         session[:user_id] = user.id
         render json: user, status: :created
     rescue ActiveRecord::RecordInvalid => e
@@ -29,9 +30,12 @@ class UsersController < ApplicationController
     private 
 
 
+    def shipping_params
+        params.permit(:address, :town, :zipcode, :state, :user_id)
+    end
 
     def user_params
-        params.permit(:email, :address, :phone, :name, :password)
+        params.permit(:email, :phone, :name, :password)
     end
     
 end
