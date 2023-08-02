@@ -46,9 +46,13 @@ group :development do
   # gem "spring"
 end
 
-# gem 'stripe'
-
-
 gem "active_model_serializers", "~> 0.10.13"
 
 gem "aws-sdk-s3", "~> 1.126"
+
+# fix all net protocol errors
+
+gem 'net-http', require: false
+gem 'net-imap', require: false
+gem 'net-protocol', require: false
+gem 'net-smtp', require: false
