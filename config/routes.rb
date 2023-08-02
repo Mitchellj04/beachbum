@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get '/admin', to: 'admins#login'
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get "*path", to: "application#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end

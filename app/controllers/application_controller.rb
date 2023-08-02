@@ -15,4 +15,8 @@ include ActionController::Cookies
         return render json: {errors: ['Not Authorized']}, status: :unauthorized unless @admin
     end
 
+    def index 
+        render file: "public/index.html"
+    end
+
 end
