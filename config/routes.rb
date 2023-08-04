@@ -9,11 +9,12 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   post '/checkout', to: 'checkout#create'
   post '/login', to: 'sessions#create'
-  post '/admin', to: 'sessions#admin'
+  post '/login/admin', to: 'sessions#admin'
   get '/products-all', to: 'products#index'
-  get '/admin', to: 'admins#login'
+  get '/signedin', to: 'admins#login'
   # Defines the root path route ("/")
   # root "articles#index"
 
   get "*path", to: "application#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+  get ""
 end

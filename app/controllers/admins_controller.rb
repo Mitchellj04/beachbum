@@ -6,7 +6,6 @@ class AdminsController < ApplicationController
         admin = @admin 
         render json: admin 
     end
-
     
 
 end

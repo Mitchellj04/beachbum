@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 
 export const adminSignIn = createAsyncThunk('admin/adminSignIn', (admin) => {
-    return fetch('/admin', {
+    return fetch('/login/admin', {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(admin)
@@ -16,7 +16,7 @@ export const adminSignIn = createAsyncThunk('admin/adminSignIn', (admin) => {
 // })
 
 export const adminProfile = createAsyncThunk('admin/adminProfile', () => {
-    return fetch ('/admin')
+    return fetch ('/signedin')
     .then((resp) => resp.json())
     .then((data) => data)
 })
