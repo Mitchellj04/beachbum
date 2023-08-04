@@ -16,7 +16,7 @@ include ActionController::Cookies
     end
 
     def index 
-        render file: "public/index.html"
+        render file: "src/index.js"
     end
 
     def admin 
