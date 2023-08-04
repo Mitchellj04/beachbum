@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   get '/products-all', to: 'products#index'
   get '/signedin', to: 'admins#login'
   # Defines the root path route ("/")
-  # root "articles#index"
+
+  root "application#index"
 
   get "*path", to: "application#index", constraints: ->(req) { !req.xhr? && req.format.html? }
-  get '/admin', to: 'application#admin', constraints: ->(req) { !req.xhr? && req.format.html? }
+  get '*path/admin', to: "application#admin", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
