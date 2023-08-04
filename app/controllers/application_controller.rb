@@ -19,4 +19,8 @@ include ActionController::Cookies
         render file: "public/index.html"
     end
 
+    def admin 
+        render file: 'public/index.html/admin'
+    end
+
 end
