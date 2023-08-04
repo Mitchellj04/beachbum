@@ -20,7 +20,7 @@ include ActionController::Cookies
     end
 
     def admin 
-        render file: 'src/AdminLogin2.js"
+        render file: "src/AdminLogin2.js"
     end
 
 end
