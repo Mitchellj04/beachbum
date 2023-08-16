@@ -15,12 +15,4 @@ include ActionController::Cookies
         return render json: {errors: ['Not Authorized']}, status: :unauthorized unless @admin
     end
 
-    def index 
-        render file: "src/AdminLogin2.js"
-    end
-
-    def admin 
-        render file: "src/AdminLogin2.js"
-    end
-
 end

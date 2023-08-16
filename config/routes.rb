@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   root "application#index"
 
-  get "*path", to: "application#index", constraints: ->(req) { !req.xhr? && req.format.html? }
-  get '/admin', to: "application#admin", constraints: ->(req) { !req.xhr? && req.format.html? }
-  get '/admin', to: "application#admin"
+  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+  # get '/admin', to: "application#admin", constraints: ->(req) { !req.xhr? && req.format.html? }
+  # get '/admin', to: "application#admin"
 end
