@@ -32,8 +32,9 @@ const Footer = () => {
               <div>
                 <h6>Beachbum</h6>
                 <ul>
-                  <li className='footer-item'><Link to="products" spy={true} smooth={true} onClick={()=> navigate('/products')}>Products</Link></li>
-                  <li className='footer-item'><Link to="conact" spy={true} smooth={true} onClick={()=> navigate('/contact')}>Contact</Link></li>
+                  <li className='footer-item'><Link to="products"  onClick={()=> navigate('/products')}>Products</Link></li>
+                  <li className='footer-item'><Link to="conact"  onClick={()=> navigate('/contact')}>Contact</Link></li>
+                  <li className='footer-item'><Link to="conact"  onClick={()=> navigate('/admin')}>Admin</Link></li>
                 </ul>
               </div>
           </div>
