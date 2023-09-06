@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
     skip_before_action :authorize
     skip_before_action :authorize_admin
     # before_destroy :delete_s3_image
+    include ActiveStorage::SetCurrent
 
     def index 
         product = Product.all
