@@ -33,6 +33,74 @@ Some of these charities contribute to cleaner oceans, beaches, and even helping 
 JUSTIN MITCHELL 
 
 
+## Getting Started
+
+This is an example of how you may set up the project locally.
+To get a local copy up and running follow these simple example steps.
+You can also visit the website live on: https://beachbum-app.onrender.com/
+
+### Prerequisites
+
+Before cloning this project make sure that you have the right enviorment setup. This application was created with Ruby on Rails and postgres as a database. With a React Frontend. 
+
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+or if you already have npm install make sure it is up to date. 
+
+* npm 
+  ```sh 
+  npm -v
+  ```
+  Make sure that you have Ruby installed as well. First check to see if you already have rails installed. 
+  
+  * Ruby 
+   ```sh 
+    ruby -v 
+   ```
+   * Ruby 
+    ```sh 
+     gem install rails 
+     ```
+
+### Installation 
+
+Next you are going to want to install the app into a new directory. 
+
+1. Clone Repo 
+  ```sh 
+    git clone https://github.com/mitchellj04/adventure-blog.git
+  ```
+2. Install dependencies   
+  ```sh 
+   bundle install 
+   ```
+4. Create the database and schema 
+  ```sh 
+   rails db:create db:migrate 
+  ```
+5. Seed the existing data   
+  ```sh 
+  rails db:seed
+  ```
+6. CD into the client folder and install packages 
+  ```sh 
+    npm install 
+  ```
+  
+  Once this is done all of the dependancies and packages should be setup for you to run the server and start the localhost
+  
+  1. Server
+    ```sh 
+      rails s 
+   ```
+  2. Local host 
+  ```sh 
+  cd client 
+  npm start 
+  ```
+
 
 
 
