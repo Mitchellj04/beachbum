@@ -12,5 +12,28 @@ Beachbum was created to sell cloths for likeminded people like me who enjoy a la
 ### Part of our mission is to give back to the planet that we love enjoying. That is why we plan to donate a percentage of all our sales to different charities that support cleaning up the earth and making contributions to a healthier planet. 
 Some of these charities contribute to cleaner oceans, beaches, and even helping replant trees in deforested areas. We are actively seeking to invest into a hemp clothing brand and recycled material to create different articles of clothing. 
 
+## Values 
+
+* Charity
+* Affordable
+* Stylish
+* Comfortable
+
+### Technologies 
+
+- Ruby on Rails 
+- Postgres 
+- Javascript 
+- React
+- Redux
+- Material UI
+
+## Creator 
+
+JUSTIN MITCHELL 
+
+
+
+
 
 
