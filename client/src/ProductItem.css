@@ -13,4 +13,6 @@
 
 .product-details {
     padding-left: 35px;
+    align-items: right;
+    text-align: right;
 }

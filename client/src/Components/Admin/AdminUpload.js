@@ -75,12 +75,13 @@ const AdminUpload = () => {
   }
 
   return (
-    <div style={{ marginTop: "100px" }}>
-      <div>
+    <div style={{ marginTop: "100px", display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div className="admin-box" style={{justifyContent: 'center', alignItems: 'center', maxWidth: '500px'}}>
         <form onSubmit={createNewItem}>
           <div className="admin-form">
             <Typography variant="h5">Upload Product</Typography>
             <TextField
+             fullWidth
               required
               autoFocus
               variant="standard"
@@ -90,6 +91,7 @@ const AdminUpload = () => {
               onChange={(e) => setTitle(e.target.value)}
             />
             <TextField
+            fullWidth
               required
               autoFocus
               variant="standard"
@@ -98,6 +100,7 @@ const AdminUpload = () => {
               style={fieldStyle}
               onChange={(e) => setPrice(e.target.value)}
             />
+            <div>
             <FormControl>
               <FormLabel id="category-buttons-group-label">Category</FormLabel>
               <RadioGroup
@@ -153,6 +156,7 @@ const AdminUpload = () => {
                 />
               </RadioGroup>
             </FormControl>
+            </div>
             <input
               type="file"
               label="image"
